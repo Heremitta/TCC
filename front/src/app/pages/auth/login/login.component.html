@@ -1,0 +1,36 @@
+<div class="content" [ngClass]="{'dark-theme': darkMode |async}">
+  <div class="envolv-login">
+    <h1 class="text-light fs-40 fw-500 mb-5">Login</h1>
+    <form #formLoading="ngForm" [formGroup]="form" class="w-50 rounded form d-flex flex-column align-items-center justify-content-center">
+      <mat-form-field (click)="form.get('email').markAsUntouched()" color="accent" appearance="outline" class="w-100">
+        <mat-label>Email</mat-label>
+          <input matInput  #email formControlName="email" type="text" name="email" id="email" class="ml-2">
+          <div matSuffix class="d-flex align-items-center" *ngIf="form.get('email').valid">
+            <mat-icon  class="color-success">check_circle_outline</mat-icon>
+          </div>
+          <mat-error *ngIf="form.get('email').hasError('pattern') && !form.get('email').hasError('required')">
+            Email invalid!
+          </mat-error>
+          <mat-error *ngIf="form.get('email').hasError('required')">
+            Email is required!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field (click)="form.get('password').markAsUntouched()" color="accent" appearance="outline" class="w-100">
+          <mat-label>Password</mat-label>
+          <input matInput (keyPress)="$event.preventDefault()" #password formControlName="password" [type]="hide ? 'password' : 'text'" name="password" id="password" class="ml-2">
+          <div matSuffix class="d-flex align-items-center">
+            <button tabindex="-1" class="d-flex" mat-icon-button  (click)="$event.preventDefault();hide = !hide; " [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon class="color-white">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </div>
+          <mat-error *ngIf="form.get('password').hasError('required')">
+            Password is required!
+          </mat-error>
+          <mat-error *ngIf="form.get('password').hasError('pattern') && !form.get('password').hasError('required')">
+            Password invalid!
+          </mat-error>
+        </mat-form-field>
+        <button  mat-raised-button class="w-100 mt-2 secondary-buttom color-white" [ngClass]="{'cresce-buttom primary-buttom': form.valid}" (click)="form.valid?logar():form.get('email').hasError('pattern')? openSnackBar('Email is invalid!','Close'): form.get('email').hasError('required')? openSnackBar('Email is required!', 'Close'):form.get('password').hasError('pattern')? openSnackBar('Password is invalid!','Close'):form.get('password').hasError('required')? openSnackBar('Password is required','Close'):''">Entrar</button>
+    </form>
+  </div>
+</div>

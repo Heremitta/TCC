@@ -1,0 +1,9 @@
+<app-dashboard-layout (menuEmiter)="changeMenu()" (logout)="logout()" [user]="user"(darkModeEmiter)="changeTheme($event)" [darkMode]="themeService.darkMode | async" (logoEmiter)="routing('/')" [ngClass]="{'dark-theme': themeService.darkMode | async}">
+  <app-menu [rotaAtual]="rotaAtual "  [menu]="menu" ></app-menu>
+  <app-menu-lateral (routingEmiter)="routing($event)" [menu]="menu"></app-menu-lateral>
+    <div class="outlet" [@routeAnimations]="prepareRoute(outlet)">
+      <div class="relative">
+        <router-outlet    #outlet="outlet" ></router-outlet>
+      </div>
+    </div>  
+</app-dashboard-layout>

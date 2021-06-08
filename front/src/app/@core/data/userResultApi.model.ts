@@ -1,0 +1,21 @@
+export class userResultApi{
+    login:{
+        avatar?:Blob
+        userId:number
+        createdAt:Date
+        uploadedAt:Date
+        user:{
+            nickName:string
+            nome:string
+            email:string
+            phone:string
+            active:boolean
+            user_type:{
+                id:number
+                description:string
+                active:boolean
+            }
+        }
+    }
+    token:string
+}

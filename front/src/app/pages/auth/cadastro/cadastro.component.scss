@@ -1,0 +1,34 @@
+@import '../../../@theme/styles/theme.scss';
+.page{
+      
+    width: 100%;
+    height: 100%;
+    padding: 3em;
+    display: flex;
+    justify-content: center;
+    .content{
+        padding: 2em;
+        width: 75%;
+        min-width: 300px;
+        background: $back-ground-dark;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .form{
+            width: 100%;
+            padding: 2em;
+            border: 1px solid white;
+            width: auto;
+        }
+    }
+}
+.dark-theme{
+    &.page{
+        .content{
+            background: $dark-background;
+        }
+
+    }
+}

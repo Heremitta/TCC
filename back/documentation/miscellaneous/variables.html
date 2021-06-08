@@ -1,0 +1,340 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>usuarios-api documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">usuarios-api documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+<ol class="breadcrumb">
+  <li>Miscellaneous</li>
+  <li>Variables</li>
+</ol>
+
+<section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#IMPORTS" title="src/@core/core.module.ts"><b>IMPORTS</b>&nbsp;&nbsp;&nbsp;(src/.../core.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#INIT_TYPES" title="src/config/config.ts"><b>INIT_TYPES</b>&nbsp;&nbsp;&nbsp;(src/.../config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#label" title="src/@core/services/logger.service.ts"><b>label</b>&nbsp;&nbsp;&nbsp;(src/.../logger.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#myFormat" title="src/@core/services/logger.service.ts"><b>myFormat</b>&nbsp;&nbsp;&nbsp;(src/.../logger.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#PRIVATE_KEY" title="src/users/services/token.service.ts"><b>PRIVATE_KEY</b>&nbsp;&nbsp;&nbsp;(src/.../token.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#PROVIDER" title="src/@core/core.module.ts"><b>PROVIDER</b>&nbsp;&nbsp;&nbsp;(src/.../core.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#timestamp" title="src/@core/services/logger.service.ts"><b>timestamp</b>&nbsp;&nbsp;&nbsp;(src/.../logger.service.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/@core/core.module.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="IMPORTS"></a>
+                        <span class="name">
+                            <b>
+                            IMPORTS</b>
+                            <a href="#IMPORTS"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[
+    ConfigModule.forRoot(),
+    SequelizeModule.forRoot({
+        dialect: &#x27;mysql&#x27;,
+        host: &#x27;localhost&#x27;,
+        port: 3306,
+        username: process.env.USUARIO_BANCO_DADOS,
+        password:
+          process.env.SENHA_BANCO_DADOS &#x3D;&#x3D; &#x27;root&#x27;
+            ? &#x27;&#x27;
+            : process.env.SENHA_BANCO_DADOS,
+        database: &#x27;maxxidata&#x27;,
+        autoLoadModels: true,
+        synchronize: true,
+      })
+]</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="PROVIDER"></a>
+                        <span class="name">
+                            <b>
+                            PROVIDER</b>
+                            <a href="#PROVIDER"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Provider[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[
+    LoggerService,
+]</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/config/config.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="INIT_TYPES"></a>
+                        <span class="name">
+                            <b>
+                            INIT_TYPES</b>
+                            <a href="#INIT_TYPES"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[
+    {description:&#x27;Admin&#x27;,active:1},
+    {description:&#x27;User&#x27;,active:1},
+    {description:&#x27;bloger&#x27;,active:0},
+]</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/@core/services/logger.service.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="label"></a>
+                        <span class="name">
+                            <b>
+                            label</b>
+                            <a href="#label"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>format.label</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="myFormat"></a>
+                        <span class="name">
+                            <b>
+                            myFormat</b>
+                            <a href="#myFormat"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>format.printf(({ level, message, label, timestamp }) &#x3D;&gt; {
+    return &#x60;${timestamp} [${label}] ${level}: ${message}&#x60;;
+  })</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="timestamp"></a>
+                        <span class="name">
+                            <b>
+                            timestamp</b>
+                            <a href="#timestamp"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>format.timestamp</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/users/services/token.service.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="PRIVATE_KEY"></a>
+                        <span class="name">
+                            <b>
+                            PRIVATE_KEY</b>
+                            <a href="#PRIVATE_KEY"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>fs.readFileSync(&#x27;src/config/keys.key&#x27;).toString()</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

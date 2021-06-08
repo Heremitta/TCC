@@ -1,0 +1,18 @@
+<div class="d-flex">
+  <div *ngFor="let item of menu" >
+    <button class="fs-20" *ngIf="((!confereRota(item.link)) && item.title)"  mat-button (click)="emitRouting(item.link)" >
+      <mat-icon *ngIf="item.icon && item.left">{{item.icon}}</mat-icon>
+      {{item.title}}
+      <mat-icon *ngIf="item.icon && !item.left">{{item.icon}}</mat-icon>
+    </button>
+    <button class="fs-20" *ngIf="((!confereRota(item.link)) && !item.title)" mat-icon-button (click)="emitRouting(item.link)" >
+      <mat-icon *ngIf="item.icon && item.left">{{item.icon}}</mat-icon>
+      <mat-icon  *ngIf="item.icon && !item.left">{{item.icon}}</mat-icon>
+    </button>
+  </div>
+  <button color="accent" mat-icon-button (click)="darkModeEmiter.emit('darkMode')">
+    <span class="material-icons light-dark">
+      {{(darkMode | async) ?'dark_mode':'light_mode'}}
+    </span>
+  </button>
+</div>

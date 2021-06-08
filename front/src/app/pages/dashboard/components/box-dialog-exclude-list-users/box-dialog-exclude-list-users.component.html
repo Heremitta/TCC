@@ -1,0 +1,24 @@
+<div class="text-center relative" mat-dialog-content>
+  <p  class="title">Delete user</p>
+</div>
+<p class="text-center">To delete the user, enter the user's email: {{user.email}}</p>
+<form novalidate autocomplete="off" #formulario="ngForm" [formGroup]="form">
+  <mat-form-field color="accent" (click)="form.get('email').markAsUntouched()" appearance="outline" class="">
+    <mat-label>Email</mat-label>
+    <input matInput  #email formControlName="email" type="text" email="email" id="email" class="ml-2">
+    <div matSuffix class="d-flex align-items-center" *ngIf="form.get('email').valid">
+      <mat-icon  class="color-success">check_circle_outline</mat-icon>
+    </div>
+    <mat-error *ngIf="form.get('email').hasError('pattern') && !form.get('email').hasError('required')">
+      Email invalid!
+    </mat-error>
+    <mat-error *ngIf="form.get('email').hasError('required')">
+      Email is required!
+    </mat-error>
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button (click)="formulario.valid?onNoClick():''" cdkFocusInitial>No thanks</button>
+    <button mat-button type="submit" (click)="alter()" [mat-dialog-close]="data">Yes</button>
+  </div>
+</form>
+

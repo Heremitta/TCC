@@ -1,0 +1,49 @@
+<h3 class="text-center">List user </h3>
+<table mat-table *ngIf="dataSource" (matSortChange)="sortData($event)" [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+
+  <ng-container matColumnDef="position">
+    <th  mat-header-cell *matHeaderCellDef mat-sort-header='id'> No. </th>
+    <td mat-cell *matCellDef="let element">
+       {{element.position}} 
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th  mat-header-cell *matHeaderCellDef mat-sort-header='name'> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nickName">
+    <th  mat-header-cell *matHeaderCellDef mat-sort-header='nickName'> Nick Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th  mat-header-cell *matHeaderCellDef mat-sort-header='email'> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="phone">
+    <th  mat-header-cell *matHeaderCellDef mat-sort-header='phone'> Phone </th>
+    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="edit">
+    <th  mat-header-cell *matHeaderCellDef > </th>
+    <td mat-cell *matCellDef="let element" > <button (click)="alterUser(element)" matTooltipPosition="above" [matTooltip]="'edit user with email '+element.email" mat-icon-button color="accent"><mat-icon>edit</mat-icon></button> </td>
+  </ng-container>
+  <ng-container matColumnDef="delete">
+    <th  mat-header-cell *matHeaderCellDef > </th>
+    <td mat-cell *matCellDef="let element" > <button (click)="deleteUse(element)" matTooltipPosition="above" [matTooltip]="'delete user with email '+element.email" mat-icon-button color="warn"><mat-icon>delete</mat-icon></button> </td>
+  </ng-container>
+
+  <tr  mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [length]="length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               (page)="pageEvent = $event;paginator($event)">
+</mat-paginator>  
+<p *ngIf="!dataSource">have no users in data base!</p>

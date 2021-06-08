@@ -1,0 +1,10 @@
+<app-visitor-layout [darkMode]="(darkMode|async)" (logoEmiter)="routing('/')" [ngClass]="{'dark-theme': darkMode | async}">
+  <app-menu [ngClass]="{'dark-theme': darkMode | async}" [rotaAtual]="rotaAtual "
+   (darkModeEmiter)="changeTheme($event)" [menu]="menu" (routingEmiter)="routing($event)">
+  </app-menu>
+    <div class="outlet" [@authRoute]="prepareRoute(outlet)">
+      <div class="relative" [ngClass]="{'dark-theme': darkMode | async}">
+        <router-outlet    #outlet="outlet" ></router-outlet>
+      </div>
+    </div>  
+</app-visitor-layout>

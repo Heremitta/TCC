@@ -1,0 +1,37 @@
+<div class="text-center relative" mat-dialog-content>
+  <p  class="title">Edit user</p>
+</div>
+<form novalidate autocomplete="off" #formulario="ngForm" [formGroup]="form">
+  <mat-form-field color="accent" (click)="form.get('description').markAsUntouched()" appearance="outline" class="w-48 ">
+    <mat-label>Description</mat-label>
+    <input matInput  #description formControlName="description" type="text" description="description" id="description" class="ml-2">
+    <div matSuffix class="d-flex align-items-center" *ngIf="form.get('description').valid">
+      <mat-icon  class="color-success">check_circle_outline</mat-icon>
+    </div>
+    <mat-error *ngIf="form.get('description').hasError('required')">
+      <strong>Description is required</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field color="accent" (click)="form.get('active').markAsUntouched()" appearance="outline" class="w-48">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName='active' (value)="type.active">
+      <mat-option value="0">
+        Inactive
+      </mat-option>
+      <mat-option value="1">
+        Active
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="form.get('active').hasError('required')">
+      <strong>active é obrigatório</strong>
+    </mat-error>
+    <mat-error *ngIf="form.get('active').hasError('pattern') && !form.get('active').hasError('required')">
+      <strong>active inválido!</strong>
+    </mat-error>
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()" cdkFocusInitial>No thanks</button>
+    <button mat-button type="submit" (click)="alter()" [mat-dialog-close]="data">Yes</button>
+  </div>
+</form>
+

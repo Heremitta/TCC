@@ -1,0 +1,43 @@
+<div class="text-center relative" mat-dialog-content>
+  <p  class="title">Edit user</p>
+</div>
+<form novalidate autocomplete="off" #formulario="ngForm" [formGroup]="form">
+  <mat-form-field color="accent" (click)="form.get('name').markAsUntouched()" appearance="outline" class="w-48 ">
+    <mat-label>Name</mat-label>
+    <input matInput  #name formControlName="name" type="text" name="name" id="name" class="ml-2">
+    <div matSuffix class="d-flex align-items-center" *ngIf="form.get('name').valid">
+      <mat-icon  class="color-success">check_circle_outline</mat-icon>
+    </div>
+    <mat-error *ngIf="form.get('name').hasError('required')">
+      <strong>Name is required</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field color="accent" (click)="form.get('nickName').markAsUntouched()" appearance="outline" class="w-48">
+    <mat-label>Nick Name</mat-label>
+    <input maxlength="14" matInput  #nickName formControlName="nickName" type="text" name="nickName" id="nickName" class="ml-2">
+    <div matSuffix class="d-flex align-items-center" *ngIf="form.get('nickName').valid">
+      <mat-icon  class="color-success">check_circle_outline</mat-icon>
+    </div>
+    <mat-error *ngIf="form.get('nickName').hasError('required')">
+      <strong>Nick Name is requierd</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field color="accent" (click)="form.get('phone').markAsUntouched()" appearance="outline" class="w-48">
+    <mat-label>Phone</mat-label>
+    <input maxlength="15  " appPhone matInput  #phone formControlName="phone" type="text" name="phone" id="phone" class="ml-2">
+    <div matSuffix class="d-flex align-items-center" *ngIf="form.get('phone').valid && phone.value != ''">
+      <mat-icon  class="color-success">check_circle_outline</mat-icon>
+    </div>
+    <mat-error *ngIf="form.get('phone').hasError('required')">
+      <strong>Phone é obrigatório</strong>
+    </mat-error>
+    <mat-error *ngIf="form.get('phone').hasError('pattern') && !form.get('phone').hasError('required')">
+      <strong>Phone inválido!</strong>
+    </mat-error>
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()" cdkFocusInitial>No thanks</button>
+    <button mat-button type="submit" (click)="alter()" [mat-dialog-close]="data">Yes</button>
+  </div>
+</form>
+

@@ -1,0 +1,34 @@
+.footer{
+    // display: flex;
+    width: 100%;
+    bottom: 0;
+}
+.content{
+    overflow-y: auto;
+    // min-height: inherit;
+    grid-area: content;
+    // display: flex;
+    max-width: 100%;
+    // overflow: scroll;
+}
+.footer{
+    // position: absolute;
+    // bottom: 0;
+}
+.footer-cover{
+    grid-area: footer;
+    position: relative;
+}
+.header{
+    grid-area: header;
+}
+.layout{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr ;
+    grid-template:  "header header header header header"
+                    "content content content content content"
+                    "footer footer footer footer footer"; 
+    max-height: 100vh;
+    height: calc(100vh);
+}

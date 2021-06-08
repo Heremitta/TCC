@@ -1,0 +1,147 @@
+<div class="page" [ngClass]="{'dark-theme': darkMode |async}">
+
+  <div class="content text-light d-flex flex-column align-items-center ">
+    <div class=" w-75 border-radius-padrao mt-3">
+      <div class="d-flex flex-column align-items-center justify-content-center">
+        <h1 class="color-white fs-38 mb-3 w-100 text-center">Sign Up</h1>
+        <hr class="w-50">
+      </div>
+      <form #formLogin="ngForm" [formGroup]="form" autocomplete="off" class=" w-100 mt-3 d-flex flex-column align-items-center mt-3">
+        <div class="w-100 mt-5">
+
+          <p class="fs-24 w-100 mb-1 color-white" >Personal data</p>
+          <hr class="w-100">
+          <div class="d-flex justify-content-around flex-wrap align-items-center w-100 mt-3">
+            <mat-form-field color="accent" (click)="form.get('name').markAsUntouched()" appearance="outline" class="w-48 ">
+              <mat-label>Name</mat-label>
+              <input matInput  #name formControlName="name" type="text" name="name" id="name" class="ml-2">
+              <div matSuffix class="d-flex align-items-center" *ngIf="form.get('name').valid">
+                <mat-icon  class="color-success">check_circle_outline</mat-icon>
+              </div>
+              <mat-error *ngIf="form.get('name').hasError('required')">
+                <strong>Name is required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field color="accent" (click)="form.get('nickName').markAsUntouched()" appearance="outline" class="w-48">
+              <mat-label>Nick Name</mat-label>
+              <input maxlength="14" matInput  #nickName formControlName="nickName" type="text" name="nickName" id="nickName" class="ml-2">
+              <div matSuffix class="d-flex align-items-center" *ngIf="form.get('nickName').valid">
+                <mat-icon  class="color-success">check_circle_outline</mat-icon>
+              </div>
+              <mat-error *ngIf="form.get('nickName').hasError('required')">
+                <strong>Nick Name is requierd</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="w-100">
+
+          <p class="fs-24 w-100 mt-4 mb-1 color-white" >Contact</p>
+          <hr class="w-100">
+          <div class="d-flex justify-content-around flex-wrap align-items-center w-100 mt-3">
+            <mat-form-field color="accent" (click)="form.get('email').markAsUntouched()" appearance="outline" class="w-48 ">
+              <mat-label>Email</mat-label>
+              <input matInput  #email formControlName="email" autocomplete="username" type="email" name="email" id="email" class="ml-2">
+              <div matSuffix class="d-flex align-items-center" *ngIf="form.get('email').valid">
+                <mat-icon  class="color-success">check_circle_outline</mat-icon>
+              </div>
+              <mat-error *ngIf="form.get('email').hasError('pattern') && !form.get('email').hasError('required')">
+                <strong>Email is invalid!</strong>
+              </mat-error>
+              <mat-error *ngIf="form.get('email').hasError('required')">
+                <strong>Email is required</strong>
+              </mat-error>
+            </mat-form-field>
+              <mat-form-field color="accent" (click)="form.get('confirmaEmail').markAsUntouched()" appearance="outline" class="w-48">
+                <mat-label>Confirmar Email</mat-label>
+                <input matInput [maxlength]="email.value.length" autocomplete="username" #confirmaEmail formControlName="confirmaEmail" type="text" name="confirmaEmail" id="confirmaEmail" class="ml-2">
+                <div matSuffix class="d-flex align-items-center" *ngIf="form.get('confirmaEmail').valid">
+                  <mat-icon  class="color-success">check_circle_outline</mat-icon>
+                </div>
+                <mat-error *ngIf="form.get('confirmaEmail').hasError('required')">
+                  <strong>Confirma Email é obrigatório</strong>
+                </mat-error>
+                <mat-error *ngIf="form.get('confirmaEmail').hasError('pattern')">
+                  <strong>O email precisa ser válido</strong>
+                </mat-error>
+                <mat-error *ngIf="form.get('confirmaEmail').hasError('emailIncorreto') && !form.get('confirmaEmail').hasError('required') && !form.get('confirmaEmail').hasError('pattern')">
+                  <strong>Email precisa ser igual</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="d-flex justify-content-around flex-wrap align-items-center w-100 ">
+              <mat-form-field color="accent" (click)="form.get('telefone').markAsUntouched()" appearance="outline" class="w-48">
+                <mat-label>Phone</mat-label>
+                <input maxlength="15  " appPhone matInput  #telefone formControlName="telefone" type="text" name="telefone" id="telefone" class="ml-2">
+                <div matSuffix class="d-flex align-items-center" *ngIf="form.get('telefone').valid && telefone.value != ''">
+                  <mat-icon  class="color-success">check_circle_outline</mat-icon>
+                </div>
+                <mat-error *ngIf="form.get('telefone').hasError('required')">
+                  <strong>Phone é obrigatório</strong>
+                </mat-error>
+                <mat-error *ngIf="form.get('telefone').hasError('pattern') && !form.get('telefone').hasError('required')">
+                  <strong>Phone inválido!</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <p class="fs-24 w-100 mt-4 mb-1 color-white" >Acont data</p>
+          <hr class="w-100">
+          <div class="w-100 mt-2 d-flex flex-wrap justify-content-around">
+            <mat-form-field color="accent" (click)="form.get('password').markAsUntouched()" appearance="outline" class="w-48 mb-4 ">
+              <mat-label>Password</mat-label>
+              <input matInput  #password formControlName="password" [type]="hiddenSenha?'text':'password'" autocomplete="new-password" name="password" id="password" class="ml-2">
+              <mat-hint class="color-white italic" *ngIf="form.get('password').invalid">1 letra maiúscula, 1 letra minuscula, 1 número e um caracter especial, mínimo de 8 caracteres</mat-hint>
+              <div matSuffix class="d-flex align-items-center">
+                <div class="d-flex align-items-center" *ngIf="form.get('password').valid">
+                  <mat-icon  class="color-success">check_circle_outline</mat-icon>
+                </div>
+                <button tabindex="-1" class="d-flex" mat-icon-button  (click)="$event.preventDefault();hiddenSenha = !hiddenSenha; " [attr.aria-label]="'Hide password'" autocomplete="new-password" [attr.aria-pressed]="hiddenSenha">
+                  <mat-icon class="color-white">{{hiddenSenha ? 'visibility':'visibility_off'}}</mat-icon>
+                </button>
+              </div>
+              <mat-error *ngIf="form.get('password').hasError('pattern') && !form.get('password').hasError('required')">
+                <strong>password is invalid!</strong>
+              </mat-error>
+              <mat-error *ngIf="form.get('password').hasError('required')">
+                <strong>password is required!</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field color="accent"  (click)="form.get('confirmPassword').markAsUntouched()" appearance="outline" class="mb-4 w-48">
+              <mat-label>Confirm password</mat-label>
+              <input matInput [maxlength]="password.value.length"  #confirmPassword formControlName="confirmPassword" [type]="hiddenConfirmaSenha?'text':'password'" autocomplete="new-password" name="confirmaSenha" id="confirmaSenha" class="ml-2">
+              <mat-hint class="color-white italic">Confirm password need to be equal Password!</mat-hint>
+              <div matSuffix class="d-flex align-items-center">
+                <button tabindex="-1" class="d-flex" mat-icon-button  (click)="$event.preventDefault();hiddenConfirmaSenha = !hiddenConfirmaSenha; " [attr.aria-label]="'Hide password'" autocomplete="new-password" [attr.aria-pressed]="hiddenConfirmaSenha">
+                  <mat-icon class="color-white">{{hiddenConfirmaSenha ? 'visibility':'visibility_off'}}</mat-icon>
+                </button>
+                <div class="d-flex align-items-center" *ngIf="form.get('confirmPassword').valid">
+                  <mat-icon  class="color-success">check_circle_outline</mat-icon>
+                </div>
+              </div>
+              <mat-error *ngIf="form.get('confirmPassword').hasError('required')">
+                <strong>Confirm password is required!</strong>
+              </mat-error>
+              <mat-error *ngIf="form.get('confirmPassword').hasError('pattern')">
+                <strong>Confirm password is requided!</strong>
+              </mat-error>
+              <mat-error *ngIf="form.get('confirmPassword').hasError('emailIncorreto') && !form.get('confirmPassword').hasError('required') && !form.get('confirmPassword').hasError('pattern')">
+                <strong>Confirm password need tobe equal to password!</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="mt-4">
+              <mat-label>User type</mat-label>
+              <mat-select formControlName="type" class="select" panelClass="select">
+                <mat-option *ngFor="let type of userTypesApi$ | async" [value]="type.id">
+                  {{type.description}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+        <button [disabled]="form.invalid"  mat-raised-button class="w-100 mt-2 secondary-buttom color-white mt-4" [ngClass]="{'cresce-buttom primary-buttom': form.valid}" (click)="signup()">Enter</button>
+      </form>
+
+          </div>
+    </div>
+
+</div>

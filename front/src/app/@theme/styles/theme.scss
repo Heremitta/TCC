@@ -1,0 +1,505 @@
+/**
+* Generated theme by Material Theme Generator
+* https://materialtheme.arcsine.dev
+* Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48IzAwNzc4NCIsIj9lcjwjYjNkNmRhIiwiO2VyPCMwMDVhNjd$LCIlPmBePCNmMmE3MmQiLCI~ZXI8I2ZiZTVjMCIsIjtlcjwjZWM4YzFjfiwid2Fybj5gXjwjZjk2NjY2IiwiP2VyPCNmZGQxZDEiLCI7ZXI8I2Y2NDk0OX4sIj9UZXh0PCMzODM5M2QiLCI~PTwjYTNiMWYxIiwiO1RleHQ8I2QyZDRkYSIsIjs9PCMyZDJlMzN$LCJmb250cz5bYEA8KC00fixgQDwoLTN$LGBAPCgtMn4sYEA8KC0xfixgQDxoZWFkbGluZX4sYEA8dGl0bGV$LGBAPHN1YiktMn4sYEA8c3ViKS0xfixgQDxib2R5LTJ$LGBAPGJvZHktMX4sYEA8YnV0dG9ufixgQDxjYXB0aW9ufixgQDxpbnB1dCIsInNpemU$bnVsbH1dLCJpY29uczxGaWxsZWQiLCI~bmVzcz5mYWxzZSwidmVyc2lvbj4xMX0=
+*/
+@import '~@angular/material/theming';
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+
+// Fonts
+// @import 'https://fonts.googleapis.com/css?family=Material+Icons';
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+  
+.fw-100{
+  font-weight: 100!important;
+}
+.fw-200{
+  font-weight: 200!important;
+}
+.fw-300{
+  font-weight: 300!important;
+}
+.fw-400{
+  font-weight: 400!important;
+}
+.fw-500{
+  font-weight: 500!important;
+}
+.fw-600{
+  font-weight: 600!important;
+}
+.fw-700{
+  font-weight: 700!important;
+}
+.fw-800{
+  font-weight: 800!important;
+}
+.fw-900{
+  font-weight: 900!important;
+}
+.fs-12{
+  font-size: 12px!important;
+}
+.fs-14{
+  font-size: 14px!important;
+}
+.fs-16{
+  font-size: 16px!important;
+}
+.fs-18{
+  font-size: 18px!important;
+}
+.fs-20{
+  font-size: 20px!important;
+}
+.fs-22{
+  font-size: 22px!important;
+}
+.fs-24{
+  font-size: 24px!important;
+}
+.fs-26{
+  font-size: 26px!important;
+}
+.fs-28{
+  font-size: 28px!important;
+}
+.fs-30{
+  font-size: 30px!important;
+}
+.fs-32{
+  font-size: 32px!important;
+}
+.fs-34{
+  font-size: 34px!important;
+}
+.fs-36{
+  font-size: 36px!important;
+}
+.fs-38{
+  font-size: 38px!important;
+}
+.fs-40{
+  font-size: 40px!important;
+}
+.fs-42{
+  font-size: 42px!important;
+}
+.fs-44{
+  font-size: 44px!important;
+}
+.fs-46{
+  font-size: 46px!important;
+}
+.fs-48{
+  font-size: 48px!important;
+}
+
+
+$fontConfig: (
+  display-4: mat-typography-level(112px, 112px, 300, 'Roboto', -0.0134em),
+  display-3: mat-typography-level(56px, 56px, 400, 'Roboto', -0.0089em),
+  display-2: mat-typography-level(45px, 48px, 400, 'Roboto', 0.0000em),
+  display-1: mat-typography-level(34px, 40px, 400, 'Roboto', 0.0074em),
+  headline: mat-typography-level(24px, 32px, 400, 'Roboto', 0.0000em),
+  title: mat-typography-level(20px, 32px, 500, 'Roboto', 0.0075em),
+  subheading-2: mat-typography-level(16px, 28px, 400, 'Roboto', 0.0094em),
+  subheading-1: mat-typography-level(15px, 24px, 500, 'Roboto', 0.0067em),
+  body-2: mat-typography-level(14px, 24px, 500, 'Roboto', 0.0179em),
+  body-1: mat-typography-level(14px, 20px, 400, 'Roboto', 0.0179em),
+  button: mat-typography-level(14px, 14px, 500, 'Roboto', 0.0893em),
+  caption: mat-typography-level(12px, 20px, 400, 'Roboto', 0.0333em),
+  input: mat-typography-level(inherit, 1.125, 400, 'Roboto', 1.5px)
+);
+
+$primary-color:rgb(0, 119, 132);
+$acent-color:rgb(242, 167, 45);
+$success-color:rgb(75, 232, 104);
+$warning-color:rgb(251, 59, 59);
+$back-ground-dark: rgb(0, 53, 60);
+$back-ground-dark-dark: darken($back-ground-dark,6);
+$darkMode : false!default;
+
+
+
+// Foreground Elements
+
+// Light Theme Text
+$dark-text: #ffffff;
+$dark-primary-text: rgba($dark-text, 0.87);
+$dark-accent-text: rgba($dark-primary-text, 0.54);
+$dark-disabled-text: rgba($dark-primary-text, 0.38);
+$dark-dividers: rgba($dark-primary-text, 0.12);
+$dark-focused: rgba($dark-primary-text, 0.12);
+
+$mat-light-theme-foreground: (
+  base:              black,
+  divider:           $dark-dividers,
+  dividers:          $dark-dividers,
+  disabled:          $dark-disabled-text,
+  disabled-button:   rgba($dark-text, 1),
+  disabled-text:     $dark-disabled-text,
+  elevation:         black,
+  secondary-text:    $dark-accent-text,
+  hint-text:         $dark-disabled-text,
+  accent-text:       $dark-accent-text,
+  icon:              $dark-accent-text,
+  icons:             $dark-accent-text,
+  text:              $dark-primary-text,
+  slider-min:        $dark-primary-text,
+  slider-off:        rgba($dark-text, 0.26),
+  slider-off-active: $dark-disabled-text,
+);
+
+// Dark Theme text
+$light-text: #d2d4da;
+$light-primary-text: $light-text;
+$light-accent-text: rgba($light-primary-text, 0.7);
+$light-disabled-text: rgba($light-primary-text, 0.5);
+$light-dividers: rgba($light-primary-text, 0.12);
+$light-focused: rgba($light-primary-text, 0.12);
+
+$mat-dark-theme-foreground: (
+  base:              $light-text,
+  divider:           $light-dividers,
+  dividers:          $light-dividers,
+  disabled:          $light-disabled-text,
+  disabled-button:   rgba($light-text, 0.3),
+  disabled-text:     $light-disabled-text,
+  elevation:         black,
+  hint-text:         $light-disabled-text,
+  secondary-text:    $light-accent-text,
+  accent-text:       $light-accent-text,
+  icon:              $light-text,
+  icons:             $light-text,
+  text:              $light-text,
+  slider-min:        $light-text,
+  slider-off:        rgba($light-text, 0.3),
+  slider-off-active: rgba($light-text, 0.3),
+);
+
+// Background config
+// Light bg
+$light-background:    #007784;
+$light-bg-darker-5:   darken($light-background, 5%);
+$light-bg-darker-10:  darken($light-background, 10%);
+$light-bg-darker-20:  darken($light-background, 20%);
+$light-bg-darker-30:  darken($light-background, 30%);
+$light-bg-lighter-5:  lighten($light-background, 5%);
+$dark-bg-tooltip:     lighten(#2d2e33, 20%);
+$dark-bg-alpha-4:     rgba(#2d2e33, 0.04);
+$dark-bg-alpha-12:    rgba(#2d2e33, 0.12);
+
+$mat-light-theme-background: (
+  background:               $light-background,
+  status-bar:               $light-bg-darker-20,
+  app-bar:                  $light-bg-darker-5,
+  hover:                    $dark-bg-alpha-4,
+  card:                     $light-bg-lighter-5,
+  dialog:                   $light-bg-lighter-5,
+  tooltip:                  $dark-bg-tooltip,
+  disabled-button:          $dark-bg-alpha-12,
+  raised-button:            $light-bg-lighter-5,
+  focused-button:           $dark-focused,
+  selected-button:          $light-bg-darker-20,
+  selected-disabled-button: $light-bg-darker-30,
+  disabled-button-toggle:   $light-bg-darker-10,
+  unselected-chip:          $light-bg-darker-10,
+  disabled-list-option:     $light-bg-darker-10,
+);
+
+// Dark bg
+$dark-background:     #2d2e33;
+$dark-bg-lighter-5:   lighten($dark-background, 5%);
+$dark-bg-lighter-10:  lighten($dark-background, 10%);
+$dark-bg-lighter-20:  lighten($dark-background, 20%);
+$dark-bg-lighter-30:  lighten($dark-background, 30%);
+$light-bg-alpha-4:    rgba(#a3b1f1, 0.04);
+$light-bg-alpha-12:   rgba(#a3b1f1, 0.12);
+
+// Background palette for dark themes.
+$mat-dark-theme-background: (
+  background:               $dark-background,
+  status-bar:               $dark-bg-lighter-20,
+  app-bar:                  $dark-bg-lighter-5,
+  hover:                    $light-bg-alpha-4,
+  card:                     $dark-bg-lighter-5,
+  dialog:                   $dark-bg-lighter-5,
+  tooltip:                  $dark-bg-lighter-20,
+  disabled-button:          $light-bg-alpha-12,
+  raised-button:            $dark-bg-lighter-5,
+  focused-button:           $light-focused,
+  selected-button:          $dark-bg-lighter-20,
+  selected-disabled-button: $dark-bg-lighter-30,
+  disabled-button-toggle:   $dark-bg-lighter-10,
+  unselected-chip:          $dark-bg-lighter-20,
+  disabled-list-option:     $dark-bg-lighter-10,
+);
+
+// Compute font config
+@include mat-core($fontConfig);
+
+// Theme Config
+
+body {
+  --primary-color: #007784;
+  --primary-lighter-color: #b3d6da;
+  --primary-darker-color: #005a67;
+  --text-primary-color: #{$light-primary-text};
+  --text-primary-lighter-color: #{$dark-primary-text};
+  --text-primary-darker-color: #{$light-primary-text};
+}   
+$mat-primary: (
+  main: #007784,
+  lighter: #0e0f0f,
+  darker: #005a67,
+  200: #007784, // For slide toggle,
+  contrast : (
+    main: $light-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  )
+);
+$theme-primary: mat-palette($mat-primary, main, lighter, darker);
+
+body {
+  --accent-color: #f2a72d;
+  --accent-lighter-color: #fbe5c0;
+  --accent-darker-color: #ec8c1c;
+  --text-accent-color: #{$dark-primary-text};
+  --text-accent-lighter-color: #{$dark-primary-text};
+  --text-accent-darker-color: #{$dark-primary-text};
+}   
+$mat-accent: (
+    main: #0d5874,
+    lighter: #b6cdd5,
+    darker: #073d57,
+    200: #073d57, // For slide toggle,
+  contrast : (
+    main: $dark-primary-text,
+    lighter: $dark-primary-text,
+    darker: $dark-primary-text,
+  )
+);
+$theme-accent: mat-palette($mat-accent, main, lighter, darker);
+$mat-accent-alt: (
+    main: #f2a72d,
+    lighter: #fbe5c0,
+    darker: #ec8c1c,
+    200: #f2a72d, // For slide toggle,
+  contrast : (
+    main: $dark-primary-text,
+    lighter: $dark-primary-text,
+    darker: $dark-primary-text,
+  )
+);
+$theme-accent-alt: mat-palette($mat-accent-alt, main, lighter, darker);
+
+body {
+  --warn-color: #fb3b3b;
+  --warn-lighter-color: #fec4c4;
+  --warn-darker-color: #f92626;
+  --text-warn-color: #{$dark-primary-text};
+  --text-warn-lighter-color: #{$dark-primary-text};
+  --text-warn-darker-color: #{$light-primary-text};
+}   
+$mat-warn: (
+  main: #fb3b3b,
+  lighter: #fec4c4,
+  darker: #f92626,
+  200: #f92626, // For slide toggle,
+  contrast : (
+    main: $dark-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  )
+);
+$theme-warn: mat-palette($mat-warn, main, lighter, darker);;
+
+
+
+$theme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
+$altTheme: mat-light-theme($theme-primary, $theme-accent-alt, $theme-warn);
+// .dark-theme{
+    //     @include angular-material-theme($altTheme)
+    // }
+    // Theme Init
+    
+    @include angular-material-theme($altTheme);
+    .theme-alternate {
+        @include angular-material-theme($theme);
+    }
+    
+    // Specific component overrides, pieces that are not in line with the general theming
+    
+    // Handle buttons appropriately, with respect to line-height
+.mat-raised-button, .mat-stroked-button, .mat-flat-button {
+    padding: 0 1.15em;
+    margin: 0 .65em;
+    min-width: 3em;
+    line-height: 36.4px
+}
+.mat-button-base{
+  &.mat-button-disabled{
+    border: 1px solid rgb(182, 181, 181)!important;
+    color:rgb(182, 181, 181)!important;
+}
+}
+.mat-stroked-button{
+    border: 1px solid $primary-color!important;
+    color: $primary-color;
+    &.mat-primary{
+        border: 1px solid $primary-color!important;
+    }
+    &.mat-button-disabled{
+        border: 1px solid rgb(182, 181, 181)!important;
+        color:rgb(182, 181, 181)!important;
+        background: rgba(234, 238, 5, 0.296)!important;
+    }
+    &.mat-accent{
+        border: 1px solid $acent-color!important;
+    }
+    &.mat-success{
+        border: 1px solid $success-color!important;
+        background: none!important;
+        color: $success-color!important;
+    }
+    &.mat-warn{
+        border: 1px solid $warning-color!important;
+    }
+}
+
+
+.mat-standard-chip {
+    padding: .5em .85em;
+    min-height: 2.5em;
+}
+    
+.material-icons {
+    font-size: 24px;
+    font-family: 'Material Icons', 'Material Icons';  
+    .mat-badge-content {
+        font-family: 'Roboto';
+    }
+}
+    // .mat-icon.mat-fab,.mat-icon.mat-mini-fab{
+    //     color:rgb(204, 200, 200)
+    // }
+.mat-success{
+    background-color: $success-color!important;
+    color: #ffffff!important;
+    transition: all .3s ease-in-out;
+    &.mat-stroked-button:hover, &.mat-button:hover{
+        background: rgba($success-color,10%)!important;
+    }
+    &.mat-button{
+      background: transparent!important;
+      color: $success-color!important;
+    }
+}
+
+
+.mat-disabled, .dark-theme.mat-disabled{
+    background-color: #c2d5c5!important;
+    color: rgb(151, 151, 151)!important;
+}
+
+.dark-theme.layout{
+  background: $back-ground-dark;
+} 
+
+
+.dark-theme {
+  @include angular-material-theme($theme);
+  .select.mat-select-panel {
+    background: rgba(0, 255, 0, 0.5)!important;
+  }
+  $darkMode : true;
+  .mat-table{
+    background: seagreen!important;
+  }
+  p,h1,h2,h3,h4,h5,h6,span{
+    color: $light-text;
+    border-color: $light-text;
+  }
+
+  .mat-warn{
+    .mat-icon{
+        color: $warning-color!important;
+        border-color: $warning-color!important;
+    }
+  }
+  .mat-primary{
+    p,h1,h2,h3,h4,h5,h6,span{
+      color: $acent-color;
+      border-color: $acent-color;
+    }
+  }
+  .mat-accent{
+    p,h1,h2,h3,h4,h5,h6,span{
+      color: $acent-color;
+      border-color: $acent-color;
+    }
+  }
+  .mat-button.mat-button-base{
+    p,h1,h2,h3,h4,h5,h6,span{
+      color: $acent-color;
+      border-color: $acent-color;
+    }
+  }
+  .light-dark{
+    color:$primary-color!important;
+  }
+
+}
+// .mat-form-field.ng-valid{
+// }
+.mat-form-field{
+  // width: 45%!important;
+  input{
+    color:$light-text!important;
+  }
+  &.ng-valid{
+      
+        label{
+          border-color: $success-color!important;
+          color:$success-color!important;
+        }
+      border-color: $success-color!important;
+      color:$success-color!important;
+    &:not(.ng-invalid){
+      color: $light-text!important;
+    }
+  }
+}
+.padding-padrao{
+    padding: 0 calc(-59.524px + 11.905vw)!important;
+    padding-block-end: 100px;
+}
+.relative{
+  position: relative;
+}
+// .w-30{
+  //   width: 30%!important;
+// }
+body.mat-typography{
+  overflow: hidden!important;
+}
+.pointer{
+  cursor: pointer;
+}
+@media screen and (max-width: 1095px) {
+  .mat-form-field{
+    width: 100%;
+  }
+  div.justify-content-around{
+    &.flex-wrap{
+      justify-content: center!important;
+      .w-48,.w-15,.w-35,.w-18 {
+        width: 100%!important;
+      }
+    }
+  }
+}
