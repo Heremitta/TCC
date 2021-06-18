@@ -7,32 +7,32 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { userModel } from '../models/user.model';
-import { userTypeModel } from '../models/userType.model';
+import { user } from '../models/user.model';
+import { TypeUser } from '../models/typeUser.model';
 import { UserService as UserService } from '../services/user.service';
 
 @Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
   // @Get('types')
-  // allUsersAndTypes(): Promise<{ users: userModel[]; types: userTypeModel[] }> {
+  // allUsersAndTypes(): Promise<{ users: user[]; types: userType[] }> {
   //   return this.userService.userAndType();
   // }
   @Get()
-  allUsers(): Promise<userModel[]> {
+  allUsers(): Promise<user[]> {
     return this.userService.getAll();
   }
   @Get(':id')
-  user(@Param('id') param): Promise<userModel> {
+  user(@Param('id') param): Promise<user> {
     return this.userService.get(param);
   }
   @Post()
-  newUser(@Body() user: userModel) {
+  newUser(@Body() user: user) {
     console.log(user);
     return this.userService.newUser(user);
   }
   @Put()
-  updateUser(@Body() user: userModel): Promise<[number, userModel[]]> {
+  updateUser(@Body() user: user): Promise<[number, user[]]> {
     return this.userService.updateUser(user);
   }
   @Delete(':id')

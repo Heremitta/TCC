@@ -1,7 +1,7 @@
 import { IsEmail, IsNotEmpty, IsString, MaxLength } from 'class-validator';
 import { Model } from 'sequelize';
 import {
-    AutoIncrement,
+  AutoIncrement,
   BelongsTo,
   Column,
   DataType,
@@ -9,21 +9,21 @@ import {
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
-import { userModel } from './user.model';
+import { user } from './user.model';
 
-export interface login{
-  email,
-  password
+export interface login {
+  email;
+  password;
 }
 
 @Table
-export class LoginModel extends Model {
-    @PrimaryKey  
-    @Column({
-      type: DataType.UUID,
-      allowNull: false,
-    })
-    id
+export class Login extends Model {
+  @PrimaryKey
+  @Column({
+    type: DataType.UUID,
+    allowNull: false,
+  })
+  id;
 
   @IsNotEmpty()
   @IsEmail()
@@ -42,11 +42,11 @@ export class LoginModel extends Model {
   })
   password: string;
 
-  @BelongsTo(() => userModel)
-  user?: userModel;
+  @BelongsTo(() => user)
+  user?: user;
 
   @IsNotEmpty()
-  @ForeignKey(() => userModel)
+  @ForeignKey(() => user)
   @Column({
     type: DataType.UUID,
     allowNull: false,

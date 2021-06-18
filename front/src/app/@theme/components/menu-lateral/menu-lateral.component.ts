@@ -1,33 +1,32 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-export interface itemMenu{
-  link:string,
-  title?:string,
-  icon?:string,
-  left?:boolean
+export interface itemMenu {
+  link: string;
+  title?: string;
+  icon?: string;
+  left?: boolean;
 }
 
 @Component({
   selector: 'app-menu-lateral',
   templateUrl: './menu-lateral.component.html',
-  styleUrls: ['./menu-lateral.component.scss']
+  styleUrls: ['./menu-lateral.component.scss'],
 })
 export class MenuLateralComponent implements OnInit {
   @Output()
-  routingEmiter:EventEmitter<string> = new EventEmitter()
+  routingEmiter: EventEmitter<string> = new EventEmitter();
   @Input()
-  menu:itemMenu[]=[]
+  menu: itemMenu[] = [];
   @Input()
-  rotaAtual
+  rotaAtual;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-  emitRouting(e){ 
+  ngOnInit() {}
+  emitRouting(e) {
     setTimeout(() => {
-      this.rotaAtual = e
+      this.rotaAtual = e;
     }, 10);
-    this.routingEmiter.emit(e)
-}
+    this.routingEmiter.emit(e);
+  }
 }

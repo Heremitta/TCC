@@ -24,127 +24,127 @@
 <title>cluster_DashboardModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-195 1729,-195 1729,-70 8,-70"/>
 </g>
-<g id="clust10" class="cluster">
-<title>cluster_DashboardModule_imports</title>
-<polygon fill="none" stroke="black" points="1431,-78 1431,-130 1721,-130 1721,-78 1431,-78"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_DashboardModule_declarations</title>
-<polygon fill="none" stroke="black" points="16,-78 16,-130 1423,-130 1423,-78 16,-78"/>
+<polygon fill="none" stroke="black" points="314,-78 314,-130 1721,-130 1721,-78 314,-78"/>
+</g>
+<g id="clust10" class="cluster">
+<title>cluster_DashboardModule_imports</title>
+<polygon fill="none" stroke="black" points="16,-78 16,-130 306,-130 306,-78 16,-78"/>
 </g>
 <!-- BoxDialogEditListUsersComponent -->
 <g id="node1" class="node">
 <title>BoxDialogEditListUsersComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="1414.75,-122 1195.25,-122 1195.25,-86 1414.75,-86 1414.75,-122"/>
-<text text-anchor="middle" x="1305" y="-99.8" font-family="Times,serif" font-size="14.00">BoxDialogEditListUsersComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="1712.75,-122 1493.25,-122 1493.25,-86 1712.75,-86 1712.75,-122"/>
+<text text-anchor="middle" x="1603" y="-99.8" font-family="Times,serif" font-size="14.00">BoxDialogEditListUsersComponent</text>
 </g>
 <!-- DashboardModule -->
 <g id="node8" class="node">
 <title>DashboardModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="903.19,-187 900.19,-191 879.19,-191 876.19,-187 782.81,-187 782.81,-151 903.19,-151 903.19,-187"/>
-<text text-anchor="middle" x="843" y="-164.8" font-family="Times,serif" font-size="14.00">DashboardModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="761.19,-187 758.19,-191 737.19,-191 734.19,-187 640.81,-187 640.81,-151 761.19,-151 761.19,-187"/>
+<text text-anchor="middle" x="701" y="-164.8" font-family="Times,serif" font-size="14.00">DashboardModule</text>
 </g>
 <!-- BoxDialogEditListUsersComponent&#45;&gt;DashboardModule -->
 <g id="edge1" class="edge">
 <title>BoxDialogEditListUsersComponent&#45;&gt;DashboardModule</title>
-<path fill="none" stroke="black" d="M1305,-122.27C1305,-140.56 1305,-166 1305,-166 1305,-166 913.4,-166 913.4,-166"/>
-<polygon fill="black" stroke="black" points="913.4,-162.5 903.4,-166 913.4,-169.5 913.4,-162.5"/>
+<path fill="none" stroke="black" d="M1603,-122.01C1603,-144.49 1603,-180 1603,-180 1603,-180 771.23,-180 771.23,-180"/>
+<polygon fill="black" stroke="black" points="771.23,-176.5 761.23,-180 771.23,-183.5 771.23,-176.5"/>
 </g>
 <!-- BoxDialogEditTypeComponent -->
 <g id="node2" class="node">
 <title>BoxDialogEditTypeComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="1177.37,-122 982.63,-122 982.63,-86 1177.37,-86 1177.37,-122"/>
-<text text-anchor="middle" x="1080" y="-99.8" font-family="Times,serif" font-size="14.00">BoxDialogEditTypeComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="1475.37,-122 1280.63,-122 1280.63,-86 1475.37,-86 1475.37,-122"/>
+<text text-anchor="middle" x="1378" y="-99.8" font-family="Times,serif" font-size="14.00">BoxDialogEditTypeComponent</text>
 </g>
 <!-- BoxDialogEditTypeComponent&#45;&gt;DashboardModule -->
 <g id="edge2" class="edge">
 <title>BoxDialogEditTypeComponent&#45;&gt;DashboardModule</title>
-<path fill="none" stroke="black" d="M1080,-122.01C1080,-138.05 1080,-159 1080,-159 1080,-159 913.11,-159 913.11,-159"/>
-<polygon fill="black" stroke="black" points="913.11,-155.5 903.11,-159 913.11,-162.5 913.11,-155.5"/>
+<path fill="none" stroke="black" d="M1378,-122.13C1378,-142.57 1378,-173 1378,-173 1378,-173 771.38,-173 771.38,-173"/>
+<polygon fill="black" stroke="black" points="771.38,-169.5 761.38,-173 771.38,-176.5 771.38,-169.5"/>
 </g>
 <!-- BoxDialogExcludeListUsersComponent -->
 <g id="node3" class="node">
 <title>BoxDialogExcludeListUsersComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="964.29,-122 721.71,-122 721.71,-86 964.29,-86 964.29,-122"/>
-<text text-anchor="middle" x="843" y="-99.8" font-family="Times,serif" font-size="14.00">BoxDialogExcludeListUsersComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="1262.29,-122 1019.71,-122 1019.71,-86 1262.29,-86 1262.29,-122"/>
+<text text-anchor="middle" x="1141" y="-99.8" font-family="Times,serif" font-size="14.00">BoxDialogExcludeListUsersComponent</text>
 </g>
 <!-- BoxDialogExcludeListUsersComponent&#45;&gt;DashboardModule -->
 <g id="edge3" class="edge">
 <title>BoxDialogExcludeListUsersComponent&#45;&gt;DashboardModule</title>
-<path fill="none" stroke="black" d="M843,-122.11C843,-122.11 843,-140.99 843,-140.99"/>
-<polygon fill="black" stroke="black" points="839.5,-140.99 843,-150.99 846.5,-140.99 839.5,-140.99"/>
+<path fill="none" stroke="black" d="M1141,-122.27C1141,-140.56 1141,-166 1141,-166 1141,-166 771.26,-166 771.26,-166"/>
+<polygon fill="black" stroke="black" points="771.26,-162.5 761.26,-166 771.26,-169.5 771.26,-162.5"/>
 </g>
 <!-- BoxSialogDeleteTypesComponent -->
 <g id="node4" class="node">
 <title>BoxSialogDeleteTypesComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="703.69,-122 492.31,-122 492.31,-86 703.69,-86 703.69,-122"/>
-<text text-anchor="middle" x="598" y="-99.8" font-family="Times,serif" font-size="14.00">BoxSialogDeleteTypesComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="1001.69,-122 790.31,-122 790.31,-86 1001.69,-86 1001.69,-122"/>
+<text text-anchor="middle" x="896" y="-99.8" font-family="Times,serif" font-size="14.00">BoxSialogDeleteTypesComponent</text>
 </g>
 <!-- BoxSialogDeleteTypesComponent&#45;&gt;DashboardModule -->
 <g id="edge4" class="edge">
 <title>BoxSialogDeleteTypesComponent&#45;&gt;DashboardModule</title>
-<path fill="none" stroke="black" d="M598,-122.01C598,-138.05 598,-159 598,-159 598,-159 772.75,-159 772.75,-159"/>
-<polygon fill="black" stroke="black" points="772.75,-162.5 782.75,-159 772.75,-155.5 772.75,-162.5"/>
+<path fill="none" stroke="black" d="M896,-122.01C896,-138.05 896,-159 896,-159 896,-159 771.1,-159 771.1,-159"/>
+<polygon fill="black" stroke="black" points="771.1,-155.5 761.1,-159 771.1,-162.5 771.1,-155.5"/>
 </g>
 <!-- DashboardComponent -->
 <g id="node5" class="node">
 <title>DashboardComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="473.97,-122 332.03,-122 332.03,-86 473.97,-86 473.97,-122"/>
-<text text-anchor="middle" x="403" y="-99.8" font-family="Times,serif" font-size="14.00">DashboardComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="771.97,-122 630.03,-122 630.03,-86 771.97,-86 771.97,-122"/>
+<text text-anchor="middle" x="701" y="-99.8" font-family="Times,serif" font-size="14.00">DashboardComponent</text>
 </g>
 <!-- DashboardComponent&#45;&gt;DashboardModule -->
 <g id="edge5" class="edge">
 <title>DashboardComponent&#45;&gt;DashboardModule</title>
-<path fill="none" stroke="black" d="M403,-122.27C403,-140.56 403,-166 403,-166 403,-166 772.74,-166 772.74,-166"/>
-<polygon fill="black" stroke="black" points="772.74,-169.5 782.74,-166 772.74,-162.5 772.74,-169.5"/>
+<path fill="none" stroke="black" d="M701,-122.11C701,-122.11 701,-140.99 701,-140.99"/>
+<polygon fill="black" stroke="black" points="697.5,-140.99 701,-150.99 704.5,-140.99 697.5,-140.99"/>
 </g>
 <!-- ListTypesComponent -->
 <g id="node6" class="node">
 <title>ListTypesComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="313.82,-122 176.18,-122 176.18,-86 313.82,-86 313.82,-122"/>
-<text text-anchor="middle" x="245" y="-99.8" font-family="Times,serif" font-size="14.00">ListTypesComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="611.82,-122 474.18,-122 474.18,-86 611.82,-86 611.82,-122"/>
+<text text-anchor="middle" x="543" y="-99.8" font-family="Times,serif" font-size="14.00">ListTypesComponent</text>
 </g>
 <!-- ListTypesComponent&#45;&gt;DashboardModule -->
 <g id="edge6" class="edge">
 <title>ListTypesComponent&#45;&gt;DashboardModule</title>
-<path fill="none" stroke="black" d="M245,-122.13C245,-142.57 245,-173 245,-173 245,-173 772.65,-173 772.65,-173"/>
-<polygon fill="black" stroke="black" points="772.65,-176.5 782.65,-173 772.65,-169.5 772.65,-176.5"/>
+<path fill="none" stroke="black" d="M543,-122.01C543,-138.05 543,-159 543,-159 543,-159 630.82,-159 630.82,-159"/>
+<polygon fill="black" stroke="black" points="630.82,-162.5 640.82,-159 630.82,-155.5 630.82,-162.5"/>
 </g>
 <!-- ListUsersComponent -->
 <g id="node7" class="node">
 <title>ListUsersComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="158.48,-122 23.52,-122 23.52,-86 158.48,-86 158.48,-122"/>
-<text text-anchor="middle" x="91" y="-99.8" font-family="Times,serif" font-size="14.00">ListUsersComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="456.48,-122 321.52,-122 321.52,-86 456.48,-86 456.48,-122"/>
+<text text-anchor="middle" x="389" y="-99.8" font-family="Times,serif" font-size="14.00">ListUsersComponent</text>
 </g>
 <!-- ListUsersComponent&#45;&gt;DashboardModule -->
 <g id="edge7" class="edge">
 <title>ListUsersComponent&#45;&gt;DashboardModule</title>
-<path fill="none" stroke="black" d="M91,-122.01C91,-144.49 91,-180 91,-180 91,-180 772.73,-180 772.73,-180"/>
-<polygon fill="black" stroke="black" points="772.73,-183.5 782.73,-180 772.73,-176.5 772.73,-183.5"/>
+<path fill="none" stroke="black" d="M389,-122.27C389,-140.56 389,-166 389,-166 389,-166 630.84,-166 630.84,-166"/>
+<polygon fill="black" stroke="black" points="630.84,-169.5 640.84,-166 630.84,-162.5 630.84,-169.5"/>
 </g>
 <!-- DashboardRouterModule -->
 <g id="node9" class="node">
 <title>DashboardRouterModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="1713.29,-122 1710.29,-126 1689.29,-126 1686.29,-122 1554.71,-122 1554.71,-86 1713.29,-86 1713.29,-122"/>
-<text text-anchor="middle" x="1634" y="-99.8" font-family="Times,serif" font-size="14.00">DashboardRouterModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="298.29,-122 295.29,-126 274.29,-126 271.29,-122 139.71,-122 139.71,-86 298.29,-86 298.29,-122"/>
+<text text-anchor="middle" x="219" y="-99.8" font-family="Times,serif" font-size="14.00">DashboardRouterModule</text>
 </g>
 <!-- DashboardRouterModule&#45;&gt;DashboardModule -->
 <g id="edge8" class="edge">
 <title>DashboardRouterModule&#45;&gt;DashboardModule</title>
-<path fill="none" stroke="black" d="M1634,-122.01C1634,-144.49 1634,-180 1634,-180 1634,-180 913.1,-180 913.1,-180"/>
-<polygon fill="black" stroke="black" points="913.1,-176.5 903.1,-180 913.1,-183.5 913.1,-176.5"/>
+<path fill="none" stroke="black" d="M219,-122.13C219,-142.57 219,-173 219,-173 219,-173 630.44,-173 630.44,-173"/>
+<polygon fill="black" stroke="black" points="630.44,-176.5 640.44,-173 630.44,-169.5 630.44,-176.5"/>
 </g>
 <!-- ThemeModule -->
 <g id="node10" class="node">
 <title>ThemeModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="1537.42,-122 1534.42,-126 1513.42,-126 1510.42,-122 1438.58,-122 1438.58,-86 1537.42,-86 1537.42,-122"/>
-<text text-anchor="middle" x="1488" y="-99.8" font-family="Times,serif" font-size="14.00">ThemeModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="122.42,-122 119.42,-126 98.42,-126 95.42,-122 23.58,-122 23.58,-86 122.42,-86 122.42,-122"/>
+<text text-anchor="middle" x="73" y="-99.8" font-family="Times,serif" font-size="14.00">ThemeModule</text>
 </g>
 <!-- ThemeModule&#45;&gt;DashboardModule -->
 <g id="edge9" class="edge">
 <title>ThemeModule&#45;&gt;DashboardModule</title>
-<path fill="none" stroke="black" d="M1488,-122.13C1488,-142.57 1488,-173 1488,-173 1488,-173 913.1,-173 913.1,-173"/>
-<polygon fill="black" stroke="black" points="913.1,-169.5 903.1,-173 913.1,-176.5 913.1,-169.5"/>
+<path fill="none" stroke="black" d="M73,-122.01C73,-144.49 73,-180 73,-180 73,-180 630.78,-180 630.78,-180"/>
+<polygon fill="black" stroke="black" points="630.78,-183.5 640.78,-180 630.78,-176.5 630.78,-183.5"/>
 </g>
 </g>
 </svg>

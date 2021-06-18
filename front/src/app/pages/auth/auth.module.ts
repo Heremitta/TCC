@@ -11,18 +11,13 @@ import { SignupService } from './cadastro/signup.service';
 // import {MatFormFieldModule} from '@angular/material/form-field';
 // import { MatInputModule } from '@angular/material/input'
 
-
 @NgModule({
-  declarations: [
-    AuthComponent,
-    LoginComponent,
-    CadastroComponent,
-  ],
+  declarations: [AuthComponent, LoginComponent, CadastroComponent],
   imports: [
     // CommonModule,
     AuthRoutingModule,
     ThemeModule,
   ],
-  providers:[SignupService]
+  providers: [SignupService],
 })
-export class AuthModule { }
+export class AuthModule {}

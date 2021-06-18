@@ -7,19 +7,27 @@ import { AuthComponent } from './auth.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { LoginComponent } from './login/login.component';
 
-const routes: Routes = [{ path: '', component: AuthComponent,
-  children:[
-    {path:'',component:LoginComponent,data:{animation: 'login'}},
-    {path:'cadastro',component:CadastroComponent,data:{animation: 'cadastro'}},
-  ]
-}];
+const routes: Routes = [
+  {
+    path: '',
+    component: AuthComponent,
+    children: [
+      { path: '', component: LoginComponent, data: { animation: 'login' } },
+      {
+        path: 'cadastro',
+        component: CadastroComponent,
+        data: { animation: 'cadastro' },
+      },
+    ],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers:[
+  providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
-    LoaderService
-  ]
+    LoaderService,
+  ],
 })
-export class AuthRoutingModule { }
+export class AuthRoutingModule {}

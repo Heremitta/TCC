@@ -11,17 +11,16 @@ import {
   PrimaryKey,
   AutoIncrement,
 } from 'sequelize-typescript';
-import { userTypeModel } from './userType.model';
+import { TypeUser } from './typeUser.model';
 
 @Table
-export class userModel extends Model {
-
-  @PrimaryKey  
+export class user extends Model {
+  @PrimaryKey
   @Column({
     type: DataType.UUID,
     allowNull: false,
   })
-  id:string
+  id: string;
 
   @IsNotEmpty()
   @IsString()
@@ -54,15 +53,14 @@ export class userModel extends Model {
   })
   email: string;
 
-  
   @IsNotEmpty()
-  @ForeignKey(() => userTypeModel)
+  @ForeignKey(() => TypeUser)
   @Column({
     type: DataType.UUID,
     allowNull: false,
   })
   typeId: string;
-  
+
   @IsNotEmpty()
   @Column({
     type: DataType.BOOLEAN,
@@ -70,8 +68,14 @@ export class userModel extends Model {
   })
   active: boolean;
 
-  @BelongsTo(() => userTypeModel)
-  user_type?: userTypeModel;
-  
-  password?:string
+  @Column({
+    type: DataType.FLOAT,
+    allowNull: false,
+  })
+  rating: number;
+
+  @BelongsTo(() => TypeUser)
+  user_type?: TypeUser;
+
+  password?: string;
 }

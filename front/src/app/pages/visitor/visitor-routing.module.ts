@@ -4,15 +4,15 @@ import { HomeComponent } from './pages/home/home.component';
 import { VisitorComponent } from './visitor.component';
 
 const routes: Routes = [
-    {path: '', component:VisitorComponent,
-    children:[
-        {path:'', component:HomeComponent}
-    ]    
-}
+  {
+    path: '',
+    component: VisitorComponent,
+    children: [{ path: '', component: HomeComponent }],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class VisitorRoutingModule { }
+export class VisitorRoutingModule {}

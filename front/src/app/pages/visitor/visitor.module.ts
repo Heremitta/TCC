@@ -12,9 +12,6 @@ import { ThemeModule } from '../../@theme/theme.module';
     VisitorRoutingModule,
     ThemeModule,
   ],
-  declarations: [
-    VisitorComponent,
-    HomeComponent,
-  ]
+  declarations: [VisitorComponent, HomeComponent],
 })
-export class VisitorModule { }
+export class VisitorModule {}

@@ -8,25 +8,26 @@ import { LogedGuard } from './loged.guard';
 import { ListTypesComponent } from './pages/list-types/list-types.component';
 import { ListUsersComponent } from './pages/list-users/list-users.component';
 
-
 const routes: Routes = [
-    {path: '', component:DashboardComponent,
-     canActivate:[LogedGuard],
-     children:[
-        {path: '', component:ListUsersComponent},
-        {path: 'types', component:ListTypesComponent}
-    ]    
-},
+  {
+    path: '',
+    component: DashboardComponent,
+    canActivate: [LogedGuard],
+    children: [
+      { path: '', component: ListUsersComponent },
+      { path: 'types', component: ListTypesComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers:[
+  providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
-    LoaderService
-  ]
+    LoaderService,
+  ],
 })
-export class DashboardRouterModule { 
-  constructor(){}
+export class DashboardRouterModule {
+  constructor() {}
 }
