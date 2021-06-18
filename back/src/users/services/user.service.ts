@@ -4,7 +4,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Login } from '../models/login.model';
 import { user } from '../models/user.model';
 import { TypeUser } from '../models/typeUser.model';
-import { GeradorUuidService } from './geradoruuid.service';
+import { GeradorUuidService } from '../../@core/services/geradoruuid.service';
 import { TokenService } from './token.service';
 import { hash } from 'bcrypt';
 
@@ -15,15 +15,15 @@ export class UserService {
     private _geradorUUID: GeradorUuidService,
     @InjectModel(TypeUser) private _type: typeof TypeUser,
     @InjectModel(Login) private _login: typeof Login,
-    @InjectModel(user) private _user: typeof user,
+    @InjectModel(user) public userModel: typeof user,
   ) {}
 
   async getAll(): Promise<user[]> {
-    return await this._user.findAll();
+    return await this.userModel.findAll();
   }
 
   async get(id: string): Promise<any> {
-    const user = await this._user.findByPk(id);
+    const user = await this.userModel.findByPk(id);
     const type = await this._type.findByPk(user.typeId, {
       attributes: ['id', 'description', 'active'],
     });
@@ -54,7 +54,7 @@ export class UserService {
   async newUser(user: user): Promise<any> {
     let uuid = this._geradorUUID.uuidv4();
 
-    const exists = await this._user.findOne({
+    const exists = await this.userModel.findOne({
       where: {
         email: user.email,
       },
@@ -69,7 +69,7 @@ export class UserService {
       );
     }
 
-    let uuidExists = await this._user.findOne({
+    let uuidExists = await this.userModel.findOne({
       where: {
         id: uuid,
       },
@@ -77,7 +77,7 @@ export class UserService {
     //MAKE BETTER, create new table with all uuid's used
     while (uuidExists) {
       uuid = this._geradorUUID.uuidv4();
-      uuidExists = await this._user.findOne({
+      uuidExists = await this.userModel.findOne({
         where: {
           id: uuid,
         },
@@ -88,7 +88,7 @@ export class UserService {
 
     user.password = await hash(user.password, 10);
 
-    const newUser = await this._user.create(user);
+    const newUser = await this.userModel.create(user);
     const login = {
       id: uuid,
       email: user.email,
@@ -127,7 +127,7 @@ export class UserService {
 
   async updateUser(user): Promise<[number, user[]]> {
     console.log(user);
-    return this._user.update(user, {
+    return this.userModel.update(user, {
       where: {
         id: user.id,
       },
@@ -135,7 +135,7 @@ export class UserService {
   }
 
   async deleteUser(id) {
-    const user = await this._user.findByPk(id);
+    const user = await this.userModel.findByPk(id);
     console.log(user);
     return user?.id
       ? (async () => {
@@ -144,7 +144,7 @@ export class UserService {
               userId: id,
             },
           });
-          await this._user.destroy({
+          await this.userModel.destroy({
             where: {
               id: id,
             },

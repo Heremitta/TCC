@@ -5,7 +5,7 @@ import { UsersModule } from './users/users.module';
 import { Module } from '@nestjs/common';
 
 @Module({
-  imports: [ChatModule, CoreModule.forRoot(), ProductsModule, UsersModule],
+  imports: [CoreModule.forRoot(), ProductsModule, UsersModule, ChatModule],
   controllers: [],
   providers: [],
   exports: [],

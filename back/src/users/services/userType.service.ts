@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { LoggerService } from 'src/@core/services/logger.service';
 import { TypeUser } from '../models/typeUser.model';
-import { GeradorUuidService } from './geradoruuid.service';
+import { GeradorUuidService } from '../../@core/services/geradoruuid.service';
 
 @Injectable()
 export class UserTypeService {

@@ -1,4 +1,4 @@
-import { SetMetadata, UseGuards } from '@nestjs/common';
+import { forwardRef, Inject, SetMetadata, UseGuards } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import {
   ConnectedSocket,
@@ -9,8 +9,8 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 import { Roles } from 'src/@core/decorators/roles.decorator';
-import { RoleWsGuard } from 'src/@core/guards/role.ws.guard';
-import { GeradorUuidService } from 'src/users/services/geradoruuid.service';
+import { RoleWsGuard } from 'src/chat/guards/role.ws.guard';
+import { GeradorUuidService } from 'src/@core/services/geradoruuid.service';
 import { Chat } from '../models/chat.model';
 import { MessagesChat } from '../models/message.model';
 
@@ -32,6 +32,7 @@ export interface Ichat {
 @UseGuards(RoleWsGuard)
 export class ChatGateway {
   constructor(
+    @Inject(GeradorUuidService)
     private _geradorUUID: GeradorUuidService,
     @InjectModel(Chat) private _chat: typeof Chat,
     @InjectModel(MessagesChat) private _messages: typeof MessagesChat,
@@ -39,7 +40,7 @@ export class ChatGateway {
   @WebSocketServer()
   server: Server;
 
-  @Roles('userLogged')
+  @Roles('user')
   @SubscribeMessage('createRoom')
   createRoom(@MessageBody() data: string, @ConnectedSocket() client: Socket) {
     client.join(data);

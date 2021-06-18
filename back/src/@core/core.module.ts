@@ -1,10 +1,10 @@
 import { Module, Provider } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { RoleWsGuard } from './guards/role.ws.guard';
+import { GeradorUuidService } from './services/geradoruuid.service';
 import { LoggerService } from './services/logger.service';
 
-const PROVIDER: Provider[] = [LoggerService];
+const PROVIDER: Provider[] = [LoggerService, GeradorUuidService];
 
 const IMPORTS = [
   ConfigModule.forRoot(),
@@ -25,15 +25,15 @@ const IMPORTS = [
 @Module({
   imports: [],
   controllers: [],
-  providers: [LoggerService, RoleWsGuard],
-  exports: [LoggerService, RoleWsGuard],
+  providers: [...PROVIDER],
+  exports: [...PROVIDER],
 })
 export class CoreModule {
   static forRoot() {
     return {
       module: CoreModule,
       imports: [...IMPORTS],
-      provider: [...PROVIDER],
+      providers: [...PROVIDER],
     };
   }
 }

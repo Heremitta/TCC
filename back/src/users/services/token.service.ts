@@ -22,19 +22,14 @@ export class TokenService {
         if (err) {
           r = err;
         } else {
-          r = of(this.decodeToken(token)).toPromise();
+          r = res;
         }
       });
       return r;
     })();
     return result;
   }
-  decodeToken(token): login | void {
-    return verify(token, PRIVATE_KEY, (err, result) => {
-      if (err) {
-        throw err;
-      }
-      return result;
-    });
+  decodeToken(token): any | void {
+    return decode(token);
   }
 }

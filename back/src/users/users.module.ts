@@ -1,9 +1,8 @@
-import { Logger, Module } from '@nestjs/common';
+import { DynamicModule, Logger, Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { UserController } from './controllers/usuarios.controller';
 import { TypeUser } from './models/typeUser.model';
 import { user } from './models/user.model';
-import { GeradorUuidService } from './services/geradoruuid.service';
 import { UserTypeService } from './services/userType.service';
 import { UserService } from './services/user.service';
 import { UserTypeController } from './controllers/usertype.controller';
@@ -16,9 +15,22 @@ import { TokenController } from './controllers/token.controller';
 import { ConfigInit } from 'src/@core/config/config';
 import { AdressUser } from './models/adressUser.model';
 
+const IMPORTS = [];
+const PROVIDER = [
+  UserService,
+  TokenService,
+  LoginService,
+  UserTypeService,
+  ConfigInit,
+  TypeUser,
+  Login,
+  user,
+  Logger,
+];
+
 @Module({
   imports: [
-    ...CoreModule.forRoot().imports,
+    CoreModule.forRoot(),
     SequelizeModule.forFeature([TypeUser, user, Login, AdressUser]),
   ],
   controllers: [
@@ -27,18 +39,15 @@ import { AdressUser } from './models/adressUser.model';
     LoginController,
     TokenController,
   ],
-  providers: [
-    ...CoreModule.forRoot().provider,
-    UserService,
-    TokenService,
-    LoginService,
-    UserTypeService,
-    GeradorUuidService,
-    ConfigInit,
-    TypeUser,
-    Login,
-    user,
-    Logger,
-  ],
+  providers: [...PROVIDER],
 })
-export class UsersModule {}
+export class UsersModule {
+  static forRoot(): DynamicModule {
+    return {
+      module: UsersModule,
+      imports: [...IMPORTS],
+      providers: [...PROVIDER],
+      exports: [...PROVIDER],
+    };
+  }
+}
