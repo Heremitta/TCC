@@ -1,11 +1,11 @@
+import { Module } from '@nestjs/common';
 import { ChatModule } from './chat/chat.module';
 import { ProductsModule } from './products/products.module';
-import { CoreModule } from './@core/core.module';
 import { UsersModule } from './users/users.module';
-import { Module } from '@nestjs/common';
 
+const IMPORTS = [UsersModule, ProductsModule, ChatModule];
 @Module({
-  imports: [CoreModule.forRoot(), ProductsModule, UsersModule, ChatModule],
+  imports: [...IMPORTS],
   controllers: [],
   providers: [],
   exports: [],

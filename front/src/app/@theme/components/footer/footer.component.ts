@@ -10,5 +10,6 @@ export class FooterComponent implements OnInit {
   logoFooter: EventEmitter<string> = new EventEmitter();
   constructor() {}
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit(): void {}
 }

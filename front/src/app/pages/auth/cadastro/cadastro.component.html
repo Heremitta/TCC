@@ -12,6 +12,20 @@
 
           <p class="fs-24 w-100 mb-1 color-white">Personal data</p>
           <hr class="w-100">
+          <div class="avatar-row">
+            <button mat-button #buttonImg [ngClass]="{'imageSelected': avatar !== userService.defaultAvatar}"
+              (click)="$event.preventDefault();imgFileInput.click()">
+              <div #avatarImage class="img"></div>
+            </button>
+            <div class="d-flex justify-content-center align-items-center mt-1">
+              <input formControlName="avatar" (change)="onImageChange($event);" hidden type="file" #imgFileInput
+                accept=".jpg,.jpeg,.png" />
+              <div class=" d-flex flex-column justify-content-center align-items-center ">
+                <span>Avatar</span>
+                <small class="fw-light h6">Select one image for your user</small>
+              </div>
+            </div>
+          </div>
           <div class="d-flex justify-content-around flex-wrap align-items-center w-100 mt-3">
             <mat-form-field color="accent" (click)="form.get('name').markAsUntouched()" appearance="outline"
               class="w-48 ">
@@ -111,11 +125,11 @@
               <div class="d-flex align-items-center" *ngIf="form.get('password').valid">
                 <mat-icon class="color-success">check_circle_outline</mat-icon>
               </div>
-              <button tabindex="-1" class="d-flex" mat-icon-button
+              <span tabindex="-1" class="d-flex" mat-icon-button
                 (click)="$event.preventDefault();hiddenSenha = !hiddenSenha; " [attr.aria-label]="'Hide password'"
                 autocomplete="new-password" [attr.aria-pressed]="hiddenSenha">
                 <mat-icon class="color-white">{{hiddenSenha ? 'visibility':'visibility_off'}}</mat-icon>
-              </button>
+              </span>
             </div>
             <mat-error *ngIf="form.get('password').hasError('pattern') && !form.get('password').hasError('required')">
               <strong>password is invalid!</strong>
@@ -132,12 +146,12 @@
               id="confirmaSenha" class="ml-2">
             <mat-hint class="color-white italic">Confirm password need to be equal Password!</mat-hint>
             <div matSuffix class="d-flex align-items-center">
-              <button tabindex="-1" class="d-flex" mat-icon-button
+              <span tabindex="-1" class="d-flex" mat-icon-button
                 (click)="$event.preventDefault();hiddenConfirmaSenha = !hiddenConfirmaSenha; "
                 [attr.aria-label]="'Hide password'" autocomplete="new-password"
                 [attr.aria-pressed]="hiddenConfirmaSenha">
                 <mat-icon class="color-white">{{hiddenConfirmaSenha ? 'visibility':'visibility_off'}}</mat-icon>
-              </button>
+              </span>
               <div class="d-flex align-items-center" *ngIf="form.get('confirmPassword').valid">
                 <mat-icon class="color-success">check_circle_outline</mat-icon>
               </div>

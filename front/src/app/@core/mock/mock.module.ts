@@ -5,31 +5,22 @@ import { UserService } from './services/user.service';
 import { LoaderService } from './services/loader.service';
 import { InterceptorService } from './services/Interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-const PROVIDERS:any[]=[
+const PROVIDERS: any[] = [
   ThemeService,
   UserService,
   LoaderService,
   InterceptorService,
-]
+];
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   declarations: [],
-  providers:[
-    ...PROVIDERS
-  ]
+  providers: [...PROVIDERS],
 })
 export class MockModule {
-  constructor(){
-    console.log('aewww')
-  }
   static forRoot(): ModuleWithProviders<MockModule> {
     return {
       ngModule: MockModule,
-      providers: [
-        ...PROVIDERS,
-      ],
+      providers: [...PROVIDERS],
     };
   }
 }

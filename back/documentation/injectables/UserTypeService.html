@@ -118,7 +118,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/users/services/userType.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/users/services/userType.service.ts:8</a></div>
                             </td>
                         </tr>
 
@@ -208,8 +208,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">src/users/services/userType.service.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="40"
+                            class="link-to-prism">src/users/services/userType.service.ts:40</a></div>
                 </td>
             </tr>
 
@@ -276,8 +276,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/users/services/userType.service.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="21"
+                            class="link-to-prism">src/users/services/userType.service.ts:21</a></div>
                 </td>
             </tr>
 
@@ -310,7 +310,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/userTypeModel.html" target="_self" >Promise&lt;userTypeModel&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/TypeUser.html" target="_self" >Promise&lt;TypeUser&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -344,8 +344,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="17"
-                            class="link-to-prism">src/users/services/userType.service.ts:17</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="18"
+                            class="link-to-prism">src/users/services/userType.service.ts:18</a></div>
                 </td>
             </tr>
 
@@ -354,7 +354,7 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/userTypeModel.html" target="_self" >Promise&lt;userTypeModel[]&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/TypeUser.html" target="_self" >Promise&lt;TypeUser[]&gt;</a></code>
 
                     </div>
                 </td>
@@ -385,8 +385,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">src/users/services/userType.service.ts:23</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">src/users/services/userType.service.ts:24</a></div>
                 </td>
             </tr>
 
@@ -453,8 +453,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">src/users/services/userType.service.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/users/services/userType.service.ts:31</a></div>
                 </td>
             </tr>
 
@@ -503,54 +503,55 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { forwardRef, Inject, Injectable } from &#x27;@nestjs/common&#x27;;
 import { InjectModel } from &#x27;@nestjs/sequelize&#x27;;
+import { TypeUser } from &#x27;../models/typeUser.model&#x27;;
+import { GeradorUuidService } from &#x27;../../@core/services/geradoruuid.service&#x27;;
 import { LoggerService } from &#x27;src/@core/services/logger.service&#x27;;
-import { userTypeModel } from &#x27;../models/userType.model&#x27;;
-import { GeradorUuidService } from &#x27;./geradoruuid.service&#x27;;
-
 
 @Injectable()
 export class UserTypeService {
   constructor(
+    @Inject(forwardRef(() &#x3D;&gt; LoggerService))
     private _logger: LoggerService,
-    private _geradorUUID:GeradorUuidService,
-    @InjectModel(userTypeModel)
-    private _userModel: typeof userTypeModel,
+    @Inject(forwardRef(() &#x3D;&gt; GeradorUuidService))
+    private _geradorUUID: GeradorUuidService,
+    @InjectModel(TypeUser)
+    private _userModel: typeof TypeUser,
   ) {}
 
-  async getAll(): Promise&lt;userTypeModel[]&gt; {
+  async getAll(): Promise&lt;TypeUser[]&gt; {
     return await this._userModel.findAll();
   }
-  async get(id): Promise&lt;userTypeModel&gt; {
+  async get(id): Promise&lt;TypeUser&gt; {
     return await this._userModel.findByPk(id);
   }
   async newUserType(type) {
-    let uuid &#x3D; this._geradorUUID.uuidv4()
-    type.id &#x3D; uuid
-    let user_type &#x3D; await this._userModel.create(type);
-    this._logger.infoLog(&#x60;New user type id ${type.id}&#x60;)
-    return user_type
+    const uuid &#x3D; this._geradorUUID.uuidv4();
+    type.id &#x3D; uuid;
+    const user_type &#x3D; await this._userModel.create(type);
+    this._logger.infoLog(&#x60;New user type id ${type.id}&#x60;);
+    return user_type;
   }
-  async updateUser(user): Promise&lt;[number, userTypeModel[]]&gt; {
-    let result &#x3D; this._userModel.update(user, {
+  async updateUser(user): Promise&lt;[number, TypeUser[]]&gt; {
+    const result &#x3D; this._userModel.update(user, {
       where: {
         id: user.id,
       },
     });
-    this._logger.infoLog(&#x60;User type id ${user.id} was deleted!&#x60;)
-    return result
+    this._logger.infoLog(&#x60;User type id ${user.id} was deleted!&#x60;);
+    return result;
   }
   async deleteUser(id) {
-    const user: userTypeModel &#x3D; await this.get(id);
-    let result &#x3D; user?.destroy()
+    const user: TypeUser &#x3D; await this.get(id);
+    const result &#x3D; user?.destroy()
       ? (() &#x3D;&gt; {
           user.destroy();
           return { message: &#x60;Deleted user type id: ${user.id}&#x60;, cod: 410 };
         })()
       : &#x60;Not user type with id &#x27;${id}&#x27;&#x60;;
-    this._logger.infoLog(result)
-    return result
+    this._logger.infoLog(result);
+    return result;
   }
 }
 </code></pre>

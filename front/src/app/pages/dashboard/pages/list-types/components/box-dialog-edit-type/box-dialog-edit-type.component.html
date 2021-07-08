@@ -1,12 +1,13 @@
 <div class="text-center relative" mat-dialog-content>
-  <p  class="title">Edit user</p>
+  <p class="title">Edit user</p>
 </div>
 <form novalidate autocomplete="off" #formulario="ngForm" [formGroup]="form">
   <mat-form-field color="accent" (click)="form.get('description').markAsUntouched()" appearance="outline" class="w-48 ">
     <mat-label>Description</mat-label>
-    <input matInput  #description formControlName="description" type="text" description="description" id="description" class="ml-2">
+    <input matInput #description formControlName="description" type="text" description="description" id="description"
+      class="ml-2">
     <div matSuffix class="d-flex align-items-center" *ngIf="form.get('description').valid">
-      <mat-icon  class="color-success">check_circle_outline</mat-icon>
+      <mat-icon class="color-success">check_circle_outline</mat-icon>
     </div>
     <mat-error *ngIf="form.get('description').hasError('required')">
       <strong>Description is required</strong>
@@ -34,4 +35,3 @@
     <button mat-button type="submit" (click)="alter()" [mat-dialog-close]="data">Yes</button>
   </div>
 </form>
-

@@ -1,8 +1,9 @@
-import { forwardRef, Inject, SetMetadata, UseGuards } from '@nestjs/common';
+import { Inject, UseGuards } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import {
   ConnectedSocket,
   MessageBody,
+  OnGatewayDisconnect,
   SubscribeMessage,
   WebSocketGateway,
   WebSocketServer,
@@ -14,61 +15,96 @@ import { GeradorUuidService } from 'src/@core/services/geradoruuid.service';
 import { Chat } from '../models/chat.model';
 import { MessagesChat } from '../models/message.model';
 
-export interface Ichat {
-  room;
+export interface chatDTO {
   userPrimaryId;
-  productId;
   userSecondaryId;
+  productId;
+  message: messageDTO;
+  token;
+}
+export interface messageDTO {
+  id?;
+  chatId?;
+  sender;
   message;
 }
-
-@WebSocketGateway(80, {
-  namespace: 'chat',
-  transports: 'websocket',
-  pingInterval: 1000,
-  pingTimeout: 5000,
-  method: ['GET', 'POST'],
-})
 @UseGuards(RoleWsGuard)
-export class ChatGateway {
+@WebSocketGateway(3030, {
+  transports: ['websocket'],
+})
+export class ChatGateway implements OnGatewayDisconnect {
+  @WebSocketServer()
+  private server: Server;
   constructor(
     @Inject(GeradorUuidService)
     private _geradorUUID: GeradorUuidService,
     @InjectModel(Chat) private _chat: typeof Chat,
     @InjectModel(MessagesChat) private _messages: typeof MessagesChat,
   ) {}
-  @WebSocketServer()
-  server: Server;
-
-  @Roles('user')
-  @SubscribeMessage('createRoom')
-  createRoom(@MessageBody() data: string, @ConnectedSocket() client: Socket) {
-    client.join(data);
+  handleDisconnect(_client: Socket) {
+    console.log(_client);
+  }
+  handleConnection(client: any, ..._args: any[]) {
+    console.log(_args, client.id);
+    client.emit('saiu');
+    return client;
   }
 
-  /**
-   * @param  {Ichat} chat
-   * see interface in {@link Ichat}
-   */
-  @SubscribeMessage('message')
-  async mesage(
-    @MessageBody() chat: Ichat,
-    @ConnectedSocket() client: Socket,
-  ): Promise<MessagesChat> {
-    const { room, userPrimaryId, productId, userSecondaryId, message } = chat;
+  // @Roles('user')
+  @SubscribeMessage('createRoom')
+  createRoom(@MessageBody() data: string, @ConnectedSocket() client: Socket) {
+    // client.join(data);
+    console.log(data, client);
+  }
 
-    const roomExists = this._chat.findOne({
-      where: {
-        id: room,
-      },
-    });
-    if (!roomExists) {
-      const newChat = this._chat.create({
-        id: room,
-        productId: productId,
-        userPrimaryId: userPrimaryId,
-        userSecondaryId: userSecondaryId,
+  @SubscribeMessage('con')
+  connection(@MessageBody() data: string, @ConnectedSocket() _client: Socket) {
+    console.log('porra do caralho');
+    console.log(data, _client);
+  }
+
+  @SubscribeMessage('message')
+  async opa(@MessageBody() chat, @ConnectedSocket() _client: Socket) {
+    console.log(chat);
+    console.log('caralho', _client);
+  }
+  /**
+   * @param  {chatDTO} chat
+   * see interface in {@link chatDTO}
+   */
+  @Roles('user')
+  @SubscribeMessage('messagem')
+  async mesage(
+    @MessageBody() chat: chatDTO,
+    @ConnectedSocket() client: Socket,
+  ) {
+    const message = await this.newMessage(chat);
+    client.emit('respMessage', message);
+  }
+
+  //functions
+  async newMessage(chat: chatDTO) {
+    const { userPrimaryId, productId, userSecondaryId, message } = chat;
+    let room = message.chatId ? message.chatId : '';
+    if (!room) {
+      room = `${userPrimaryId.slice(0, 13)}${userSecondaryId.slice(
+        13,
+        24,
+      )}${productId.slice(24, 36)}`;
+
+      const roomExists = this._chat.findOne({
+        where: {
+          id: room,
+        },
       });
+      if (!roomExists) {
+        this._chat.create({
+          id: room,
+          productId: productId,
+          userPrimaryId: userPrimaryId,
+          userSecondaryId: userSecondaryId,
+        });
+      }
     }
     let uuid;
     let uuidExists;
@@ -84,10 +120,9 @@ export class ChatGateway {
       id: uuid,
       chatId: room,
       userPrimaryId: userPrimaryId,
-      userSecondaryId: userSecondaryId,
-      message: message,
+      sender: message.sender,
+      message: message.message,
     });
-
     return newMessage;
   }
   // @SubscribeMessage('new_mesage')

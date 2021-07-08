@@ -12,7 +12,7 @@ export interface itemMenu {
   templateUrl: './menu-lateral.component.html',
   styleUrls: ['./menu-lateral.component.scss'],
 })
-export class MenuLateralComponent implements OnInit {
+export class MenuLateralComponent {
   @Output()
   routingEmiter: EventEmitter<string> = new EventEmitter();
   @Input()
@@ -22,7 +22,6 @@ export class MenuLateralComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
   emitRouting(e) {
     setTimeout(() => {
       this.rotaAtual = e;

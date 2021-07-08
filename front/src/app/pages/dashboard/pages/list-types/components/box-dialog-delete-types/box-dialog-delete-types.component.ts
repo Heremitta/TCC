@@ -4,21 +4,18 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-box-dialog-delete-types',
   templateUrl: './box-dialog-delete-types.component.html',
-  styleUrls: ['./box-dialog-delete-types.component.scss']
+  styleUrls: ['./box-dialog-delete-types.component.scss'],
 })
-export class BoxSialogDeleteTypesComponent implements OnInit {
-
+export class BoxSialogDeleteTypesComponent {
   constructor(
     public dialogRef: MatDialogRef<BoxSialogDeleteTypesComponent>,
-    @Inject(MAT_DIALOG_DATA) public data) {}
-
+    @Inject(MAT_DIALOG_DATA) public data,
+  ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-  escolha(){
-    this.data.choice = true
-  }
-  ngOnInit(): void {
+  escolha() {
+    this.data.choice = true;
   }
 }

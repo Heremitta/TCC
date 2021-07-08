@@ -66,6 +66,21 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#userModel">userModel</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -117,12 +132,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(_tokenService: <a href="../injectables/TokenService.html">TokenService</a>, _geradorUUID: <a href="../injectables/GeradorUuidService.html">GeradorUuidService</a>, _type, _login, _user)</code>
+<code>constructor(_geradorUUID: <a href="../injectables/GeradorUuidService.html">GeradorUuidService</a>, _tokenService: <a href="../injectables/TokenService.html">TokenService</a>, _type, _login, userModel)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/users/services/user.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/users/services/user.service.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -140,10 +155,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>_tokenService</td>
+                                                        <td>_geradorUUID</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/TokenService.html" target="_self" >TokenService</a></code>
+                                                                        <code><a href="../injectables/GeradorUuidService.html" target="_self" >GeradorUuidService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -152,10 +167,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>_geradorUUID</td>
+                                                        <td>_tokenService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/GeradorUuidService.html" target="_self" >GeradorUuidService</a></code>
+                                                                        <code><a href="../injectables/TokenService.html" target="_self" >TokenService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -186,7 +201,7 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>_user</td>
+                                                        <td>userModel</td>
                                                   
                                                         <td>
                                                         </td>
@@ -234,8 +249,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="135"
-                            class="link-to-prism">src/users/services/user.service.ts:135</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="143"
+                            class="link-to-prism">src/users/services/user.service.ts:143</a></div>
                 </td>
             </tr>
 
@@ -302,8 +317,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/users/services/user.service.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/users/services/user.service.ts:32</a></div>
                 </td>
             </tr>
 
@@ -374,8 +389,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="21"
-                            class="link-to-prism">src/users/services/user.service.ts:21</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/users/services/user.service.ts:28</a></div>
                 </td>
             </tr>
 
@@ -384,7 +399,7 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/userModel.html" target="_self" >Promise&lt;userModel[]&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/user.html" target="_self" >Promise&lt;user[]&gt;</a></code>
 
                     </div>
                 </td>
@@ -408,15 +423,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>newUser(user: <a href="../classes/userModel.html">userModel</a>)</code>
+                    <code>newUser(user: <a href="../classes/user.html">user</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="55"
-                            class="link-to-prism">src/users/services/user.service.ts:55</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/users/services/user.service.ts:61</a></div>
                 </td>
             </tr>
 
@@ -438,7 +453,7 @@
                                 <tr>
                                     <td>user</td>
                                     <td>
-                                                <code><a href="../classes/userModel.html" target="_self" >userModel</a></code>
+                                                <code><a href="../classes/user.html" target="_self" >user</a></code>
                                     </td>
 
                                     <td>
@@ -487,8 +502,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="126"
-                            class="link-to-prism">src/users/services/user.service.ts:126</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">src/users/services/user.service.ts:135</a></div>
                 </td>
             </tr>
 
@@ -555,8 +570,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="153"
-                            class="link-to-prism">src/users/services/user.service.ts:153</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="163"
+                            class="link-to-prism">src/users/services/user.service.ts:163</a></div>
                 </td>
             </tr>
 
@@ -573,139 +588,184 @@
         </tbody>
     </table>
 </section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="userModel"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            userModel</b>
+                            <a href="#userModel"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @InjectModel(user)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/users/services/user.service.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
 
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpException, HttpStatus, Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  forwardRef,
+  HttpException,
+  HttpStatus,
+  Inject,
+  Injectable,
+} from &#x27;@nestjs/common&#x27;;
 import { InjectModel } from &#x27;@nestjs/sequelize&#x27;;
 // import {Op} from &#x27;sequelize&#x27;
-import { LoginModel } from &#x27;../models/login.model&#x27;;
-import { userModel } from &#x27;../models/user.model&#x27;;
-import { userTypeModel } from &#x27;../models/userType.model&#x27;;
-import { GeradorUuidService } from &#x27;./geradoruuid.service&#x27;;
+import { Login } from &#x27;../models/login.model&#x27;;
+import { user } from &#x27;../models/user.model&#x27;;
+import { TypeUser } from &#x27;../models/typeUser.model&#x27;;
+import { GeradorUuidService } from &#x27;../../@core/services/geradoruuid.service&#x27;;
 import { TokenService } from &#x27;./token.service&#x27;;
-import {hash} from &#x27;bcrypt&#x27;
+import { hash } from &#x27;bcrypt&#x27;;
 
 @Injectable()
 export class UserService {
   constructor(
-    private _tokenService:TokenService,
-    private _geradorUUID:GeradorUuidService,
-    @InjectModel(userTypeModel) private _type: typeof userTypeModel,
-    @InjectModel(LoginModel) private _login: typeof LoginModel,
-    @InjectModel(userModel) private _user: typeof userModel,
+    @Inject(forwardRef(() &#x3D;&gt; GeradorUuidService))
+    private _geradorUUID: GeradorUuidService,
+    private _tokenService: TokenService,
+    @InjectModel(TypeUser) private _type: typeof TypeUser,
+    @InjectModel(Login) private _login: typeof Login,
+    @InjectModel(user) public userModel: typeof user,
   ) {}
 
-  async getAll(): Promise&lt;userModel[]&gt; {
-    return await this._user.findAll();
+  async getAll(): Promise&lt;user[]&gt; {
+    return await this.userModel.findAll();
   }
 
-  async get(id:string): Promise&lt;any&gt; {
-    let user &#x3D; await this._user.findByPk(id);
-    let type &#x3D; await this._type.findByPk(user.typeId,{
-      attributes:[&#x27;id&#x27;,&#x27;description&#x27;,&#x27;active&#x27;]
-    })
-    let token &#x3D; this._tokenService.signToken({userId:user.id})
-    let res &#x3D; {
-      login:{       
-        userId:user.id,
+  async get(id: string): Promise&lt;any&gt; {
+    const user &#x3D; await this.userModel.findByPk(id);
+    const type &#x3D; await this._type.findByPk(user.typeId, {
+      attributes: [&#x27;id&#x27;, &#x27;description&#x27;, &#x27;active&#x27;],
+    });
+    const token &#x3D; this._tokenService.signToken({ userId: user.id });
+    const res &#x3D; {
+      login: {
+        userId: user.id,
         createdAt: user.createdAt,
         updatedAt: user.updatedAt,
-        user:{
-            nickName:user.nickName,
-            name:user.name,
-            email:user.email,
-            phone:user.phone,
-            active:user.active,
-            user_type:{
-                id:type.id,
-                description: type.description,
-                active:type.active
-            }
-          }
+        user: {
+          nickName: user.nickName,
+          name: user.name,
+          email: user.email,
+          phone: user.phone,
+          active: user.active,
+          user_type: {
+            id: type.id,
+            description: type.description,
+            active: type.active,
+          },
         },
-        token
-      }
-      return res
-      
+      },
+      token,
+    };
+    return res;
   }
 
-  async newUser(user: userModel): Promise&lt;any&gt; {
-    let uuid &#x3D; this._geradorUUID.uuidv4()
+  async newUser(user: user): Promise&lt;any&gt; {
+    let uuid &#x3D; this._geradorUUID.uuidv4();
 
-    let exists &#x3D; await this._user.findOne({
-        where:{
-            email:user.email
-        }
-    })
-    if(exists){
-        throw new HttpException({
-            status:HttpStatus.CONFLICT,
-            error:&#x27;User has already been registered&#x27;
-        },HttpStatus.CONFLICT);
+    const exists &#x3D; await this.userModel.findOne({
+      where: {
+        email: user.email,
+      },
+    });
+    if (exists) {
+      throw new HttpException(
+        {
+          status: HttpStatus.CONFLICT,
+          error: &#x27;User has already been registered&#x27;,
+        },
+        HttpStatus.CONFLICT,
+      );
     }
 
-    let uuidExists &#x3D; await this._user.findOne({
-        where:{
-            id:uuid
-        }
-    })
+    let uuidExists &#x3D; await this.userModel.findOne({
+      where: {
+        id: uuid,
+      },
+    });
     //MAKE BETTER, create new table with all uuid&#x27;s used
-    while(uuidExists){
-        uuid &#x3D; this._geradorUUID.uuidv4()
-        uuidExists &#x3D; await this._user.findOne({
-            where:{
-                id:uuid
-            }
-        })
+    while (uuidExists) {
+      uuid &#x3D; this._geradorUUID.uuidv4();
+      uuidExists &#x3D; await this.userModel.findOne({
+        where: {
+          id: uuid,
+        },
+      });
     }
 
-    user.id &#x3D; uuid
+    user.id &#x3D; uuid;
 
-    user.password &#x3D; await hash(user.password, 10)
+    user.password &#x3D; await hash(user.password, 10);
 
-    let newUser &#x3D; await this._user.create(user);
-    let login &#x3D; {
-      id:uuid,
+    const newUser &#x3D; await this.userModel.create(user);
+    const login &#x3D; {
+      id: uuid,
       email: user.email,
       password: user.password,
       userId: newUser.id,
     };
 
-    let type &#x3D; await this._type.findByPk(user.typeId,{
-        attributes:[&#x27;id&#x27;,&#x27;description&#x27;,&#x27;active&#x27;]
-    })
+    const type &#x3D; await this._type.findByPk(user.typeId, {
+      attributes: [&#x27;id&#x27;, &#x27;description&#x27;, &#x27;active&#x27;],
+    });
 
-    await this._login.create(login)
+    await this._login.create(login);
 
-    let token &#x3D;  this._tokenService.signToken({userId:newUser.id})
+    const token &#x3D; this._tokenService.signToken({ userId: newUser.id });
     return {
-      login:{       
-        userId:newUser.id,
+      login: {
+        userId: newUser.id,
         createdAt: newUser.createdAt,
         updatedAt: newUser.updatedAt,
-        user:{
-            nickName:newUser.nickName,
-            name:newUser.name,
-            email:newUser.email,
-            phone:newUser.phone,
-            active:newUser.active,
-            user_type:{
-                id:type.id,
-                description: type.description,
-                active:type.active
-            }
-          }
+        user: {
+          nickName: newUser.nickName,
+          name: newUser.name,
+          email: newUser.email,
+          phone: newUser.phone,
+          active: newUser.active,
+          user_type: {
+            id: type.id,
+            description: type.description,
+            active: type.active,
+          },
         },
-      token
-    }
+      },
+      token,
+    };
   }
 
-  async updateUser(user): Promise&lt;[number, userModel[]]&gt; {
-    console.log(user)
-    return this._user.update(user, {
+  async updateUser(user): Promise&lt;[number, user[]]&gt; {
+    return this.userModel.update(user, {
       where: {
         id: user.id,
       },
@@ -713,26 +773,28 @@ export class UserService {
   }
 
   async deleteUser(id) {
-    const user &#x3D; await this._user.findByPk(id)
-    console.log(user)
-    return user?.id? (async () &#x3D;&gt; {
-          await this._login.destroy({where:{
-            userId:id 
-          }})
-          await this._user.destroy({
-            where:{
-              id:id
-            }
-          })
+    const user &#x3D; await this.userModel.findByPk(id);
+    return user?.id
+      ? (async () &#x3D;&gt; {
+          await this._login.destroy({
+            where: {
+              userId: id,
+            },
+          });
+          await this.userModel.destroy({
+            where: {
+              id: id,
+            },
+          });
           return { message: &#x60;Deleted user id: ${user.id}&#x60;, cod: 410 };
         })()
       : &#x60;Not user with id &#x27;${id}&#x27;&#x60;;
   }
 
   //
-  async userAndType(): Promise&lt;{ users: userModel[]; types: userTypeModel[] }&gt; {
-    const users: userModel[] &#x3D; await this.getAll();
-    const types: userTypeModel[] &#x3D; await this._type.findAll()
+  async userAndType(): Promise&lt;{ users: user[]; types: TypeUser[] }&gt; {
+    const users: user[] &#x3D; await this.getAll();
+    const types: TypeUser[] &#x3D; await this._type.findAll();
     return { users, types };
   }
 }

@@ -17,14 +17,16 @@ export class TokenController {
   @Get(':token')
   async checkToken(@Param('token') token: string) {
     const verify = await this._tokenService.verifyToken(token);
-    if ('userId' in verify) {
-      const r = await this._userService.get(verify.userId);
-      return r;
+    if (verify) {
+      if ('userId' in verify) {
+        const r = await this._userService.get(verify.userId);
+        return r;
+      }
     }
     throw new HttpException(
       {
         status: HttpStatus.UNAUTHORIZED,
-        error: 'User need to login again!',
+        error: 'Token was expired! Need to login again!',
       },
       HttpStatus.UNAUTHORIZED,
     );

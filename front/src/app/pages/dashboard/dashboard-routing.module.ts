@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard.component';
 import { LogedGuard } from './loged.guard';
 import { ListTypesComponent } from './pages/list-types/list-types.component';
 import { ListUsersComponent } from './pages/list-users/list-users.component';
+import { MessagesComponent } from './pages/messages/messages.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
     children: [
       { path: '', component: ListUsersComponent },
       { path: 'types', component: ListTypesComponent },
+      { path: 'messages', component: MessagesComponent },
     ],
   },
 ];

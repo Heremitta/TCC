@@ -1,4 +1,10 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import {
+  forwardRef,
+  HttpException,
+  HttpStatus,
+  Inject,
+  Injectable,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 // import {Op} from 'sequelize'
 import { Login } from '../models/login.model';
@@ -11,8 +17,9 @@ import { hash } from 'bcrypt';
 @Injectable()
 export class UserService {
   constructor(
-    private _tokenService: TokenService,
+    @Inject(forwardRef(() => GeradorUuidService))
     private _geradorUUID: GeradorUuidService,
+    private _tokenService: TokenService,
     @InjectModel(TypeUser) private _type: typeof TypeUser,
     @InjectModel(Login) private _login: typeof Login,
     @InjectModel(user) public userModel: typeof user,
@@ -21,7 +28,9 @@ export class UserService {
   async getAll(): Promise<user[]> {
     return await this.userModel.findAll();
   }
-
+  async getOne(id: string): Promise<any> {
+    return await this.userModel.findByPk(id);
+  }
   async get(id: string): Promise<any> {
     const user = await this.userModel.findByPk(id);
     const type = await this._type.findByPk(user.typeId, {
@@ -39,6 +48,7 @@ export class UserService {
           email: user.email,
           phone: user.phone,
           active: user.active,
+          avatar: user.avatar ? user.avatar : '',
           user_type: {
             id: type.id,
             description: type.description,
@@ -126,7 +136,6 @@ export class UserService {
   }
 
   async updateUser(user): Promise<[number, user[]]> {
-    console.log(user);
     return this.userModel.update(user, {
       where: {
         id: user.id,
@@ -136,7 +145,6 @@ export class UserService {
 
   async deleteUser(id) {
     const user = await this.userModel.findByPk(id);
-    console.log(user);
     return user?.id
       ? (async () => {
           await this._login.destroy({

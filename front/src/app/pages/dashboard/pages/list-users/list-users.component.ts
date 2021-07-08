@@ -9,8 +9,8 @@ import { map } from 'rxjs/operators';
 import { User } from '../../../../@core/data/user.model';
 import { userResultApi } from '../../../../@core/data/userResultApi.model';
 import { UserService } from '../../../../@core/mock/services/user.service';
-import { BoxDialogEditListUsersComponent } from '../../components/box-dialog-edit-list-users/box-dialog-list-users.component';
-import { BoxDialogExcludeListUsersComponent } from '../../components/box-dialog-exclude-list-users/box-dialog-exclude-list-users.component';
+import { BoxDialogEditListUsersComponent } from './components/box-dialog-edit-list-users/box-dialog-list-users.component';
+import { BoxDialogExcludeListUsersComponent } from './components/box-dialog-exclude-list-users/box-dialog-exclude-list-users.component';
 
 @Component({
   selector: 'app-list-users',
@@ -43,7 +43,7 @@ export class ListUsersComponent implements OnInit {
   constructor(
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
-    private _userService: UserService
+    private _userService: UserService,
   ) {}
   ngOnInit() {
     if (this._userService.users.length == 0) {
@@ -55,7 +55,7 @@ export class ListUsersComponent implements OnInit {
               e.position = index + 1;
             });
             return user;
-          })
+          }),
         )
         .subscribe(
           (users) => {
@@ -71,7 +71,7 @@ export class ListUsersComponent implements OnInit {
           },
           () => {
             sub.unsubscribe();
-          }
+          },
         );
     } else {
       this.dataSource = new MatTableDataSource(this._userService.users);
@@ -141,7 +141,7 @@ export class ListUsersComponent implements OnInit {
             },
             () => {
               sub2.unsubscribe();
-            }
+            },
           );
         }
       },
@@ -150,7 +150,7 @@ export class ListUsersComponent implements OnInit {
       },
       () => {
         sub.unsubscribe();
-      }
+      },
     );
   }
   alterUser(user) {
@@ -170,7 +170,7 @@ export class ListUsersComponent implements OnInit {
             },
             () => {
               sub2.unsubscribe();
-            }
+            },
           );
         } else {
           this.openSnackBar('Nothing has changed!', 'Close');
@@ -181,13 +181,13 @@ export class ListUsersComponent implements OnInit {
       },
       () => {
         sub.unsubscribe();
-      }
+      },
     );
   }
   paginator(page) {
     this.listUsersDysplay = this.listUsers.slice(
       page.pageIndex * page.pageSize,
-      (page.pageIndex + 1) * page.pageSize
+      (page.pageIndex + 1) * page.pageSize,
     );
     this.dataSource = new MatTableDataSource(this.listUsersDysplay);
     this.dataSource.sort = this.sort;

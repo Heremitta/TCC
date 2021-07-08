@@ -1,23 +1,23 @@
-/* tslint:disable:no-unused-variable */
+/* eslint-disable no-unused-vars, @typescript-eslint/no-unused-vars */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { BoxSialogDeleteTypesComponent } from './box-dialog-delete-types.component';
+import { ChatComponent } from './chat.component';
 
-describe('BoxSialogDeleteTypesComponent', () => {
-  let component: BoxSialogDeleteTypesComponent;
-  let fixture: ComponentFixture<BoxSialogDeleteTypesComponent>;
+describe('ChatComponent', () => {
+  let component: ChatComponent;
+  let fixture: ComponentFixture<ChatComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BoxSialogDeleteTypesComponent ]
+      declarations: [ ChatComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BoxSialogDeleteTypesComponent);
+    fixture = TestBed.createComponent(ChatComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

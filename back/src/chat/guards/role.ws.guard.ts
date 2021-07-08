@@ -6,7 +6,6 @@ import {
   forwardRef,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { InjectModel } from '@nestjs/sequelize';
 import { Observable } from 'rxjs';
 import { TokenService } from 'src/users/services/token.service';
 import { UserService } from 'src/users/services/user.service';

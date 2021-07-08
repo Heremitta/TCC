@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
+import { userResultApi } from '../../../@core/data/userResultApi.model';
 
 @Component({
   selector: 'app-dashboard-layout',
@@ -7,7 +9,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
     <div [ngClass]="{ 'dark-theme': darkMode }" class="layout   ">
       <app-header-dashboard
         class="header"
-        [user]="user"
+        [user$]="user"
         (toggleMenu)="menuEmit($event); toggleMenu = !toggleMenu"
         [darkMode]="darkMode"
         (logout)="logout.emit('logout')"
@@ -34,11 +36,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
     </div>
   `,
 })
-export class DashboardLayoutComponent implements OnInit {
+export class DashboardLayoutComponent {
   @Output()
   darkModeEmiter: EventEmitter<string> = new EventEmitter();
   @Input()
-  user;
+  user: Observable<userResultApi>;
   @Output()
   logoEmiter: EventEmitter<string> = new EventEmitter();
   @Output()
@@ -50,7 +52,6 @@ export class DashboardLayoutComponent implements OnInit {
   toggleMenu = true;
   constructor() {}
 
-  ngOnInit() {}
   menuEmit(event) {
     this.menuEmiter.emit(event);
   }

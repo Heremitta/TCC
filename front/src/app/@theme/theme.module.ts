@@ -26,6 +26,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
+import { BackRouteDirective } from './directives/backRoute.directive';
 
 const PIPES: any[] = [];
 const COMPONENTES: any = [
@@ -37,7 +38,7 @@ const COMPONENTES: any = [
   DashboardLayoutComponent,
   MenuLateralComponent,
 ];
-const DIRECTIVES: any = [PhoneDirective];
+const DIRECTIVES: any = [PhoneDirective, BackRouteDirective];
 @NgModule({
   imports: [
     CommonModule,

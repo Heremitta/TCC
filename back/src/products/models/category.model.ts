@@ -1,12 +1,8 @@
-import { IsEmail, IsNotEmpty, IsString, MaxLength } from 'class-validator';
+import { IsNotEmpty, IsString, MaxLength } from 'class-validator';
 import {
   Model,
-  AutoIncrement,
-  BelongsTo,
   Column,
   DataType,
-  ForeignKey,
-  IsFloat,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';

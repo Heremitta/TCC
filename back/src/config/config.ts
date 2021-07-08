@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { UserTypeService } from 'src/users/services/userType.service';
 
 const INIT_TYPES = [
@@ -7,12 +7,14 @@ const INIT_TYPES = [
 ];
 @Injectable()
 export class ConfigInit {
-  constructor(private _userTypesService: UserTypeService) {
-    this.init();
-  }
+  types: any[];
+  constructor(
+    @Inject(UserTypeService)
+    private _userTypesService: UserTypeService,
+  ) {}
   async init() {
-    const types = await this._userTypesService.getAll();
-    if (types.length == 0) {
+    this.types = await this._userTypesService.getAll();
+    if (this.types.length == 0) {
       INIT_TYPES.forEach((element) => {
         this._userTypesService.newUserType(element);
       });

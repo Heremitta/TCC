@@ -184,8 +184,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/users/services/login.service.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">src/users/services/login.service.ts:16</a></div>
                 </td>
             </tr>
 
@@ -261,8 +261,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="51"
-                            class="link-to-prism">src/users/services/login.service.ts:51</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/users/services/login.service.ts:61</a></div>
                 </td>
             </tr>
 
@@ -313,52 +313,62 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpException, HttpStatus, Injectable } from &#x27;@nestjs/common&#x27;;
 import { InjectModel } from &#x27;@nestjs/sequelize&#x27;;
-import { LoginModel } from &#x27;../models/login.model&#x27;;
-import { userModel } from &#x27;../models/user.model&#x27;;
-import { userTypeModel } from &#x27;../models/userType.model&#x27;;
+import { Login } from &#x27;../models/login.model&#x27;;
+import { user } from &#x27;../models/user.model&#x27;;
+import { TypeUser } from &#x27;../models/typeUser.model&#x27;;
 import { TokenService } from &#x27;./token.service&#x27;;
-import {hash,compare} from &#x27;bcrypt&#x27;
+import { hash, compare } from &#x27;bcrypt&#x27;;
 
 @Injectable()
 export class LoginService {
-  constructor(  private _tokenService:TokenService,
-                @InjectModel(LoginModel) private _login: typeof LoginModel
-              ) {}
+  constructor(
+    private _tokenService: TokenService,
+    @InjectModel(Login) private _login: typeof Login,
+  ) {}
 
-  async getLogin( email, password ): Promise&lt;any&gt; {
-
-    let login &#x3D; await this._login.findOne({
-                  attributes:[&#x27;userId&#x27;,&#x27;createdAt&#x27;,&#x27;updatedAt&#x27;,&#x27;password&#x27;],
-                  where: { &quot;email&quot;:email},
-                  include:[{
-                    model:userModel,
-                    as:&#x27;user&#x27;,
-                    attributes:[&#x27;nickName&#x27;,&#x27;name&#x27;,&#x27;email&#x27;,&#x27;phone&#x27;,&#x27;active&#x27;],
-                    include:[{
-                        model:userTypeModel,
-                        as:&#x27;user_type&#x27;,
-                        attributes:[&#x27;id&#x27;,&#x27;description&#x27;,&#x27;active&#x27;]
-                    }]
-                  }]
-                 })
-    if(!(login?.userId)){
-      throw new HttpException({
-        status:HttpStatus.NOT_FOUND,
-        error:&#x27;Have no user with this email!&#x27;
-      },HttpStatus.NOT_FOUND);
+  async getLogin(email, password): Promise&lt;any&gt; {
+    const login &#x3D; await this._login.findOne({
+      attributes: [&#x27;userId&#x27;, &#x27;createdAt&#x27;, &#x27;updatedAt&#x27;, &#x27;password&#x27;],
+      where: { email: email },
+      include: [
+        {
+          model: user,
+          as: &#x27;user&#x27;,
+          attributes: [&#x27;nickName&#x27;, &#x27;name&#x27;, &#x27;email&#x27;, &#x27;phone&#x27;, &#x27;active&#x27;],
+          include: [
+            {
+              model: TypeUser,
+              as: &#x27;user_type&#x27;,
+              attributes: [&#x27;id&#x27;, &#x27;description&#x27;, &#x27;active&#x27;],
+            },
+          ],
+        },
+      ],
+    });
+    if (!login?.userId) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_FOUND,
+          error: &#x27;Have no user with this email!&#x27;,
+        },
+        HttpStatus.NOT_FOUND,
+      );
     }
-    let res &#x3D; await compare(password,login.password)
-    login.password &#x3D; undefined
+    const res &#x3D; await compare(password, login.password);
+    login.password &#x3D; undefined;
 
-    if(!res){
-      throw new HttpException({
-        status:HttpStatus.UNAUTHORIZED,
-        error:&#x27;Password is wrong!&#x27;
-      },HttpStatus.UNAUTHORIZED);
+    if (!res) {
+      throw new HttpException(
+        {
+          status: HttpStatus.UNAUTHORIZED,
+          error: &#x27;Password is wrong!&#x27;,
+        },
+        HttpStatus.UNAUTHORIZED,
+      );
     }
 
-    let token &#x3D; this._tokenService.signToken({userId:login.userId})
-    return {login, token}
+    const token &#x3D; this._tokenService.signToken({ userId: login.userId });
+    return { login, token };
   }
 
   async newLogin(login) {

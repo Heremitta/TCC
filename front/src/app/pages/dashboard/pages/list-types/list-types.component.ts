@@ -7,15 +7,15 @@ import { MatTableDataSource } from '@angular/material/table';
 import { map } from 'rxjs/operators';
 import { User } from '../../../../@core/data/user.model';
 import { UserService } from '../../../../@core/mock/services/user.service';
-import { BoxDialogEditTypeComponent } from '../../components/box-dialog-edit-type/box-dialog-edit-type.component';
-import { BoxSialogDeleteTypesComponent } from '../../components/box-dialog-delete-types/box-dialog-delete-types.component';
+import { BoxDialogEditTypeComponent } from './components/box-dialog-edit-type/box-dialog-edit-type.component';
+import { BoxSialogDeleteTypesComponent } from './components/box-dialog-delete-types/box-dialog-delete-types.component';
 
 @Component({
   selector: 'app-list-types',
   templateUrl: './list-types.component.html',
   styleUrls: ['./list-types.component.scss'],
 })
-export class ListTypesComponent implements OnInit {
+export class ListTypesComponent {
   displayedColumns: string[] = [
     'position',
     'description',
@@ -39,7 +39,7 @@ export class ListTypesComponent implements OnInit {
   constructor(
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
-    private _userService: UserService
+    private _userService: UserService,
   ) {
     if (this._userService.types.length == 0) {
       let sub = this._userService
@@ -50,7 +50,7 @@ export class ListTypesComponent implements OnInit {
               e.position = index + 1;
             });
             return types;
-          })
+          }),
         )
         .subscribe(
           (types) => {
@@ -66,7 +66,7 @@ export class ListTypesComponent implements OnInit {
           },
           () => {
             sub.unsubscribe();
-          }
+          },
         );
     } else {
       this.dataSource = new MatTableDataSource(this._userService.types);
@@ -74,7 +74,6 @@ export class ListTypesComponent implements OnInit {
       this.listTypes = this._userService.types;
     }
   }
-  ngOnInit() {}
   sortData(sort: Sort) {
     const data = this.dataSource;
     if (!sort.active || sort.direction === '') {
@@ -137,7 +136,7 @@ export class ListTypesComponent implements OnInit {
             },
             () => {
               sub2.unsubscribe();
-            }
+            },
           );
         }
       },
@@ -146,7 +145,7 @@ export class ListTypesComponent implements OnInit {
       },
       () => {
         sub.unsubscribe();
-      }
+      },
     );
   }
   alterUser(type) {
@@ -166,7 +165,7 @@ export class ListTypesComponent implements OnInit {
             },
             () => {
               sub2.unsubscribe();
-            }
+            },
           );
         } else {
           this.openSnackBar('Nothing has changed!', 'Close');
@@ -177,13 +176,13 @@ export class ListTypesComponent implements OnInit {
       },
       () => {
         sub.unsubscribe();
-      }
+      },
     );
   }
   paginator(page) {
     this.listTypesDysplay = this.listTypes.slice(
       page.pageIndex * page.pageSize,
-      (page.pageIndex + 1) * page.pageSize
+      (page.pageIndex + 1) * page.pageSize,
     );
     this.dataSource = new MatTableDataSource(this.listTypesDysplay);
     this.dataSource.sort = this.sort;

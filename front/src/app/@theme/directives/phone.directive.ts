@@ -6,7 +6,6 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 export class PhoneDirective {
   constructor(private el: ElementRef) {}
 
-  ngOnInit() {}
   @HostListener('keyup', ['$event'])
   up(event) {
     if (

@@ -1,15 +1,19 @@
-import { IsNotEmpty, IsEmail, IsString, MaxLength } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsEmail,
+  IsString,
+  MaxLength,
+  IsBase64,
+} from 'class-validator';
+import { BLOB } from 'sequelize';
 import {
   Table,
   Model,
   Column,
   DataType,
-  HasOne,
   ForeignKey,
-  BelongsToMany,
   BelongsTo,
   PrimaryKey,
-  AutoIncrement,
 } from 'sequelize-typescript';
 import { TypeUser } from './typeUser.model';
 
@@ -38,6 +42,13 @@ export class user extends Model {
     allowNull: false,
   })
   name: string;
+
+  @IsBase64()
+  @Column({
+    type: BLOB,
+    allowNull: true,
+  })
+  avatar?;
 
   @MaxLength(20)
   @Column({
@@ -70,9 +81,9 @@ export class user extends Model {
 
   @Column({
     type: DataType.FLOAT,
-    allowNull: false,
+    allowNull: true,
   })
-  rating: number;
+  rating?: number;
 
   @BelongsTo(() => TypeUser)
   user_type?: TypeUser;

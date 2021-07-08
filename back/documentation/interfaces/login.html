@@ -149,7 +149,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { IsEmail, IsNotEmpty, IsString, MaxLength } from &#x27;class-validator&#x27;;
 import { Model } from &#x27;sequelize&#x27;;
 import {
-    AutoIncrement,
+  AutoIncrement,
   BelongsTo,
   Column,
   DataType,
@@ -157,21 +157,21 @@ import {
   PrimaryKey,
   Table,
 } from &#x27;sequelize-typescript&#x27;;
-import { userModel } from &#x27;./user.model&#x27;;
+import { user } from &#x27;./user.model&#x27;;
 
-export interface login{
-  email,
-  password
+export interface login {
+  email;
+  password;
 }
 
 @Table
-export class LoginModel extends Model {
-    @PrimaryKey  
-    @Column({
-      type: DataType.UUID,
-      allowNull: false,
-    })
-    id
+export class Login extends Model {
+  @PrimaryKey
+  @Column({
+    type: DataType.UUID,
+    allowNull: false,
+  })
+  id;
 
   @IsNotEmpty()
   @IsEmail()
@@ -190,11 +190,11 @@ export class LoginModel extends Model {
   })
   password: string;
 
-  @BelongsTo(() &#x3D;&gt; userModel)
-  user?: userModel;
+  @BelongsTo(() &#x3D;&gt; user)
+  user?: user;
 
   @IsNotEmpty()
-  @ForeignKey(() &#x3D;&gt; userModel)
+  @ForeignKey(() &#x3D;&gt; user)
   @Column({
     type: DataType.UUID,
     allowNull: false,

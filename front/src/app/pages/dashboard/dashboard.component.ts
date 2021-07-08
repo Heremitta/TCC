@@ -16,7 +16,7 @@ import { menu, MENU_LATERAL_ITEMS } from './menu-lateral';
   styleUrls: ['./dashboard.component.scss'],
   animations: [animacaoDeRota],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
   menu: menu[];
   rotaAtual;
   user;
@@ -29,14 +29,14 @@ export class DashboardComponent implements OnInit {
     private _userDbService: UserDbService,
     private _router: Router,
     public themeService: ThemeService,
-    private _userService: UserService
+    private _userService: UserService,
   ) {
     this.menu = MENU_LATERAL_ITEMS;
     this.menu.forEach((menu) => {
       this.titleMenus.push(menu.title);
     });
     this.rotaAtual = this._router.url;
-    this.user = this._userService.user;
+    this.user = this._userService.user$;
   }
 
   changeMenu() {
@@ -51,7 +51,6 @@ export class DashboardComponent implements OnInit {
     }
     this.menuOpen = !this.menuOpen;
   }
-  ngOnInit() {}
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 4000,
@@ -60,7 +59,6 @@ export class DashboardComponent implements OnInit {
     });
   }
   routing(e) {
-    console.log(e);
     this._router.navigate([e]);
   }
   changeTheme(event) {
@@ -81,7 +79,7 @@ export class DashboardComponent implements OnInit {
   }
   logout() {
     this.user = undefined;
-    this._userService.user = undefined;
+    this._userService.user$ = undefined;
     this._userDbService.userDb.clear();
     this.openSnackBar('You has been logout!', 'fechar');
     this._router.navigate(['/pages']);

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { LoaderService } from './@core/mock/services/loader.service';
 
@@ -13,8 +14,11 @@ export class AppComponent {
   constructor(private _loadingService: LoaderService) {
     this.loading = this._loadingService.isLoading;
   }
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+  prepareRoute(outlet: RouterOutlet) {
+    return (
+      outlet &&
+      outlet.activatedRouteData &&
+      outlet.activatedRouteData['animation']
+    );
   }
 }

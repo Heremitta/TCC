@@ -4,7 +4,7 @@ import { Login } from '../models/login.model';
 import { user } from '../models/user.model';
 import { TypeUser } from '../models/typeUser.model';
 import { TokenService } from './token.service';
-import { hash, compare } from 'bcrypt';
+import { compare } from 'bcrypt';
 
 @Injectable()
 export class LoginService {

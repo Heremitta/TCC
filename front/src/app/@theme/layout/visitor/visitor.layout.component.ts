@@ -33,14 +33,13 @@ import {
     </div>
   `,
 })
-export class VisitorLayoutComponent implements OnInit {
+export class VisitorLayoutComponent {
   @Input()
   darkMode;
   @Output()
   logoEmiter: EventEmitter<string> = new EventEmitter();
   constructor() {}
 
-  ngOnInit() {}
   logoEmit(logoHome) {
     this.logoEmiter.emit(logoHome);
   }

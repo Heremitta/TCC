@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 import { userResultApi } from '../../../@core/data/userResultApi.model';
 
 @Component({
@@ -19,5 +20,5 @@ export class HeaderDashboardComponent {
   @Input()
   darkMode;
   @Input()
-  user: userResultApi;
+  user$: Observable<userResultApi>;
 }

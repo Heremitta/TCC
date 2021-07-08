@@ -1,7 +1,7 @@
 export class userResultApi{
     login:{
         avatar?:Blob
-        userId:number
+        userId:string
         createdAt:Date
         uploadedAt:Date
         user:{
@@ -11,7 +11,7 @@ export class userResultApi{
             phone:string
             active:boolean
             user_type:{
-                id:number
+                id:string
                 description:string
                 active:boolean
             }

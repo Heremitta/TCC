@@ -1,26 +1,17 @@
-import {
-  IsEmail,
-  isNotEmpty,
-  IsNotEmpty,
-  IsString,
-  MaxLength,
-} from 'class-validator';
+import { IsNotEmpty, IsString, MaxLength } from 'class-validator';
 import {
   Model,
-  AutoIncrement,
   BelongsTo,
   Column,
   DataType,
   ForeignKey,
-  IsFloat,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
-import { user } from 'src/users/models/user.model';
 import { Chat } from './chat.model';
 
 @Table({
-  tableName: 'mesages_chat',
+  tableName: 'messages_chat',
 })
 export class MessagesChat extends Model {
   @PrimaryKey
@@ -29,9 +20,6 @@ export class MessagesChat extends Model {
     allowNull: false,
   })
   id;
-
-  @BelongsTo(() => user)
-  user?: user;
 
   @BelongsTo(() => Chat)
   chat?: Chat;
@@ -45,19 +33,11 @@ export class MessagesChat extends Model {
   chatId: string;
 
   @IsNotEmpty()
-  @ForeignKey(() => user)
   @Column({
     type: DataType.UUID,
     allowNull: false,
   })
-  userPrimaryId: string;
-
-  @IsNotEmpty()
-  @Column({
-    type: DataType.UUID,
-    allowNull: false,
-  })
-  userSecondaryId: string;
+  sender: string;
 
   @IsNotEmpty()
   @IsString()

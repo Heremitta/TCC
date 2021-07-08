@@ -1,10 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { sign, decode, verify } from 'jsonwebtoken';
-import { login } from '../models/login.model';
 import * as fs from 'fs';
-import { of } from 'rxjs';
 
-const PRIVATE_KEY = fs.readFileSync('src/@core/config/keys.key').toString();
+const PRIVATE_KEY = fs.readFileSync('src/config/keys.key').toString();
 @Injectable()
 export class TokenService {
   signToken(payload) {
@@ -20,7 +18,7 @@ export class TokenService {
       let r;
       verify(token, PRIVATE_KEY, (err, res) => {
         if (err) {
-          r = err;
+          r = null;
         } else {
           r = res;
         }

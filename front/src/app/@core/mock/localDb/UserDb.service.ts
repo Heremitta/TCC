@@ -24,6 +24,7 @@ export class UserDbService extends dexie{
   async getUser() {
     return await this.userDb.toArray(user => this.user = user[0])
   }
+  
   async saveUser({userId,token}){
     try {
       await this.userDb.clear()
@@ -34,6 +35,9 @@ export class UserDbService extends dexie{
     } catch (e) {
       console.log("erro to save user in indexedDb ", e)
     }
+  }
+  clear(){
+    this.userDb.clear()
   }
 
 }

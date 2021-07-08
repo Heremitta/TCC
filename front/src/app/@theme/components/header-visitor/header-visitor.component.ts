@@ -6,10 +6,8 @@ import { EventEmitter } from '@angular/core';
   templateUrl: './header-visitor.component.html',
   styleUrls: ['./header-visitor.component.scss'],
 })
-export class HeaderVisitorComponent implements OnInit {
+export class HeaderVisitorComponent {
   @Output()
   logoHome: EventEmitter<string> = new EventEmitter();
   constructor() {}
-
-  ngOnInit() {}
 }

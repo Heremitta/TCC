@@ -26,7 +26,7 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: () =>
       import('./pages/dashboard/dashboard.module').then(
-        (m) => m.DashboardModule
+        (m) => m.DashboardModule,
       ),
   },
   { path: 'google', component: LoginComponent },

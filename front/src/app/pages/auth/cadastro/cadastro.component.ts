@@ -1,8 +1,12 @@
 import {
+  AfterContentInit,
+  AfterViewInit,
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   ViewChild,
+  ViewChildren,
   ViewEncapsulation,
 } from '@angular/core';
 import {
@@ -15,6 +19,7 @@ import {
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Console } from 'console';
 import { BehaviorSubject, Observable, of, Subscription } from 'rxjs';
 import { catchError, map, subscribeOn, tap } from 'rxjs/operators';
 import { User } from '../../../@core/data/user.model';
@@ -29,7 +34,7 @@ import { SignupService } from './signup.service';
   styleUrls: ['./cadastro.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class CadastroComponent implements OnInit {
+export class CadastroComponent implements OnInit, OnDestroy, AfterViewInit {
   subscribes: Subscription[] = [];
   form: FormGroup;
   fb: FormBuilder;
@@ -38,20 +43,25 @@ export class CadastroComponent implements OnInit {
   darkMode: BehaviorSubject<boolean>;
   userApi$: Observable<userResultApi>;
   userTypesApi$: Observable<any>;
+  avatar: any;
+  avatarToUp;
+  @ViewChild('avatarImage')
+  avatarSpan: ElementRef<HTMLSpanElement>;
 
   constructor(
-    private _userService: UserService,
+    public userService: UserService,
     private _signupService: SignupService,
     private _snackBar: MatSnackBar,
     private _router: Router,
-    private _themeService: ThemeService
+    private _themeService: ThemeService,
   ) {
+    this.avatar = this.userService.defaultAvatar;
     this.darkMode = this._themeService.darkMode;
   }
-
   ngOnInit(): void {
     this.fb = new FormBuilder();
     this.form = this.fb.group({
+      avatar: this.fb.control('', [Validators.required]),
       name: this.fb.control('', [Validators.required]),
       nickName: this.fb.control('', [Validators.required]),
       email: this.fb.control(' ', [
@@ -69,7 +79,7 @@ export class CadastroComponent implements OnInit {
       password: this.fb.control('', [
         Validators.required,
         Validators.pattern(
-          '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$.,;%^&*-]).{8,20}$'
+          '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$.,;%^&*-]).{8,20}$',
         ),
       ]),
       confirmPassword: this.fb.control('', []),
@@ -79,24 +89,56 @@ export class CadastroComponent implements OnInit {
     this.form.controls['confirmPassword'].setValidators([
       this.confirmaSenha(
         this.form.controls['password'],
-        this.form.controls['confirmPassword']
+        this.form.controls['confirmPassword'],
       ),
       Validators.required,
       Validators.pattern(
-        '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$.,;%^&*-]).{8,20}$'
+        '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$.,;%^&*-]).{8,20}$',
       ),
     ]);
     this.form.controls['confirmaEmail'].setValidators([
       this.confirmEmail(
         this.form.controls['email'],
-        this.form.controls['confirmaEmail']
+        this.form.controls['confirmaEmail'],
       ),
       Validators.required,
       Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
     ]);
 
-    this.userTypesApi$ = this._userService.getUserTypes();
+    this.userTypesApi$ = this.userService.getUserTypes();
   }
+  ngAfterViewInit(): void {
+    console.log(this.avatarSpan);
+    this.avatarSpan.nativeElement.style.backgroundImage = `url(${this.avatar})`;
+    this.avatarSpan.nativeElement.style.width = `80px`;
+    this.avatarSpan.nativeElement.style.height = `80px`;
+    this.avatarSpan.nativeElement.style.backgroundPosition = `center`;
+    this.avatarSpan.nativeElement.style.backgroundSize = `cover`;
+  }
+  onImageChange(e) {
+    const reader = new FileReader();
+
+    if (e.target.files && e.target.files.length) {
+      const [file] = e.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this.avatar = reader.result;
+        this.avatarSpan.nativeElement.style.backgroundImage = `url(${this.avatar})`;
+
+        this.avatarToUp = reader.result;
+        // this.avatarToUp = file;
+        this.avatarToUp = this.avatarToUp
+          .replace('data:', '')
+          .replace(/^.+,/, '');
+        this.avatarToUp = JSON.stringify(this.avatarToUp);
+        // this.form.patchValue({
+        //   avatar: reader.result,
+        // });
+      };
+    }
+  }
+
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
@@ -143,8 +185,11 @@ export class CadastroComponent implements OnInit {
       this.form.value.email,
       this.form.value.type,
       true,
-      this.form.value.password
+      this.form.value.password,
     );
+    this.avatar === this.userService.defaultAvatar
+      ? ''
+      : (user.avatar = this.avatarToUp.toString('base64'));
 
     let sub = this._signupService.signUp(user).subscribe(
       (user) => {
@@ -158,7 +203,7 @@ export class CadastroComponent implements OnInit {
       },
       () => {
         sub.unsubscribe();
-      }
+      },
     );
   }
 }

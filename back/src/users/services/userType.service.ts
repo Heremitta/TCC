@@ -1,13 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { LoggerService } from 'src/@core/services/logger.service';
 import { TypeUser } from '../models/typeUser.model';
 import { GeradorUuidService } from '../../@core/services/geradoruuid.service';
+import { LoggerService } from 'src/@core/services/logger.service';
 
 @Injectable()
 export class UserTypeService {
   constructor(
+    @Inject(forwardRef(() => LoggerService))
     private _logger: LoggerService,
+    @Inject(forwardRef(() => GeradorUuidService))
     private _geradorUUID: GeradorUuidService,
     @InjectModel(TypeUser)
     private _userModel: typeof TypeUser,

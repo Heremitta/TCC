@@ -8,7 +8,6 @@ import {
   Put,
 } from '@nestjs/common';
 import { user } from '../models/user.model';
-import { TypeUser } from '../models/typeUser.model';
 import { UserService as UserService } from '../services/user.service';
 
 @Controller('user')
@@ -28,7 +27,6 @@ export class UserController {
   }
   @Post()
   newUser(@Body() user: user) {
-    console.log(user);
     return this.userService.newUser(user);
   }
   @Put()

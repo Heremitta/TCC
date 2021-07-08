@@ -1,18 +1,16 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { Server } from 'socket.io';
 
-async function bootstrap() {
+(async () => {
   const app = await NestFactory.create(AppModule, {
     cors: {
-      origin: '*', //change for production
+      origin: '*', //change for production,
     },
     logger: ['log', 'error', 'warn'],
+    bodyParser: true,
   });
-  const io = new Server();
   app.useGlobalPipes(new ValidationPipe({}));
   app.enableCors();
-  io.listen(await app.listen(3000));
-}
-bootstrap();
+  await app.listen(3000);
+})();

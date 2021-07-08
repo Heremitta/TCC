@@ -23,17 +23,17 @@ const IMPORTS = [
   }),
 ];
 @Module({
-  imports: [],
+  imports: [...IMPORTS],
   controllers: [],
   providers: [...PROVIDER],
-  exports: [...PROVIDER],
+  exports: [...IMPORTS, ...PROVIDER],
 })
 export class CoreModule {
-  static forRoot() {
-    return {
-      module: CoreModule,
-      imports: [...IMPORTS],
-      providers: [...PROVIDER],
-    };
-  }
+  // static forRoot(): DynamicModule {
+  //   return {
+  //     module: CoreModule,
+  //     imports: [...IMPORTS],
+  //     providers: [...PROVIDER],
+  //   };
+  // }
 }

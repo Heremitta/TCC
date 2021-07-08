@@ -1,8 +1,15 @@
 <div class="content" [ngClass]="{'dark-theme': darkMode |async}">
   <div class="envolv-login">
+    <div class="buttonBack">
+      <button mat-fab appBackRoute>
+        <mat-icon>
+          arrow_back
+        </mat-icon>
+      </button>
+    </div>
     <h1 class="text-light fs-40 fw-500 mb-5">Login</h1>
     <form #formLoading="ngForm" [formGroup]="form"
-      class="w-50 rounded form d-flex flex-column align-items-center justify-content-center">
+      class=" rounded form d-flex flex-column align-items-center justify-content-center">
       <mat-form-field (click)="form.get('email').markAsUntouched()" color="accent" appearance="outline" class="w-100">
         <mat-label>Email</mat-label>
         <input matInput #email formControlName="email" type="text" name="email" id="email" class="ml-2">
@@ -19,13 +26,13 @@
       <mat-form-field (click)="form.get('password').markAsUntouched()" color="accent" appearance="outline"
         class="w-100">
         <mat-label>Password</mat-label>
-        <input matInput (keyPress)="$event.preventDefault()" #password formControlName="password"
-          [type]="hide ? 'password' : 'text'" name="password" id="password" class="ml-2">
+        <input matInput #password formControlName="password" [type]="hide ? 'password' : 'text'" name="password"
+          id="password" class="ml-2">
         <div matSuffix class="d-flex align-items-center">
-          <button tabindex="-1" class="d-flex" mat-icon-button (click)="$event.preventDefault();hide = !hide; "
+          <span tabindex="-1" class="d-flex" mat-icon-button (click)="$event.preventDefault();hide = !hide; "
             [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon class="color-white">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
+          </span>
         </div>
         <mat-error *ngIf="form.get('password').hasError('required')">
           Password is required!

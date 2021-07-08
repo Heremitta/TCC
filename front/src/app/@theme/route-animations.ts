@@ -10,16 +10,17 @@ import {
 } from '@angular/animations';
 
 export const animacaoDeRota = trigger('routeAnimations', [
-  transition('* <=> *', slideTo('right')),
-  transition('void <=> *', slideTo('right')),
-  transition('* <=> void', slideTo('right')),
+  transition('* <=> *', opacityEfect()),
+  transition('void <=> *', opacityEfect()),
+  transition('* <=> void', opacityEfect()),
 ]);
 export const authRoute = trigger('authRoute', [
   transition('* <=> *', slideTo('right')),
-  transition('login <=> cadastro', slideTo('right')),
-  transition('* <=> void', slideTo('right')),
+  transition('auth => home', slideTo('left')),
+  // transition('home <= auth', slideTo('left')),
+  // transition('auth <= home', slideTo('left')),
 ]);
-function slideTo(direction) {
+function opacityEfect() {
   const optional = { optional: true };
   return [
     query(
@@ -28,24 +29,48 @@ function slideTo(direction) {
         style({
           position: 'absolute',
           top: 0,
-          // [direction]: 0,
           width: '100%',
           opacity: 0,
         }),
       ],
-      optional
+      optional,
     ),
-    // query(':enter',[
-    //   // style({[direction]: '-100%'})
-    // ], optional),
     group([
-      // query(':leave',[
-      //   animate('2s ease', style({opacity:1,position:'relative'}))
-      // ], optional),
       query(
         ':enter',
         [animate('1s ease', style({ opacity: 1, position: 'relative' }))],
-        optional
+        optional,
+      ),
+    ]),
+  ];
+}
+
+function slideTo(direction) {
+  const optional = { optional: true };
+  return [
+    query(
+      ':enter, :leave',
+      [
+        style({
+          position: 'absolute',
+          top: 0,
+          [direction]: 0,
+          width: '100%',
+        }),
+      ],
+      optional,
+    ),
+    query(':enter', [style({ [direction]: '-100%' })], optional),
+    group([
+      query(
+        ':leave',
+        [animate('600ms ease', style({ [direction]: '100%' }))],
+        optional,
+      ),
+      query(
+        ':enter',
+        [animate('600ms ease', style({ [direction]: '0%' }))],
+        optional,
       ),
     ]),
   ];

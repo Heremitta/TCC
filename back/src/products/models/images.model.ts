@@ -1,11 +1,10 @@
-import { IsNotEmpty, IsString, MaxLength, IsBase64 } from 'class-validator';
+import { IsNotEmpty, IsBase64 } from 'class-validator';
 import {
   Model,
   BelongsTo,
   Column,
   DataType,
   ForeignKey,
-  IsFloat,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';

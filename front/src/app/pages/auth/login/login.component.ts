@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -11,22 +12,25 @@ import { SignInService } from './signIn.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   private _subscribes: Subscription[] = [];
 
   form: FormGroup;
   darkMode;
   hide = true;
-
   constructor(
     private _router: Router,
     private _singInService: SignInService,
     private _snackBar: MatSnackBar,
-    private _themeService: ThemeService
+    private _themeService: ThemeService,
+    private _location: Location,
   ) {
     this.darkMode = this._themeService.darkMode;
   }
 
+  backRout() {
+    this._location.back;
+  }
   ngOnInit() {
     this.form = new FormGroup({
       email: new FormControl('', [
@@ -35,7 +39,7 @@ export class LoginComponent implements OnInit {
       ]),
       password: new FormControl('', [
         Validators.pattern(
-          '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$.,;%^&*-]).{8,20}$'
+          '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$.,;%^&*-]).{8,20}$',
         ),
         Validators.required,
       ]),
@@ -66,8 +70,10 @@ export class LoginComponent implements OnInit {
       let sub = this._singInService.signIn(login).subscribe(
         (user) => {
           if ('login' in user) {
-            this._singInService.isLoged(user);
-            this._router.navigate(['/dashboard']);
+            (async () => {
+              await this._singInService.isLoged(user);
+              this._router.navigate(['/dashboard']);
+            })();
           }
         },
         (err) => {
@@ -75,7 +81,7 @@ export class LoginComponent implements OnInit {
         },
         () => {
           sub.unsubscribe();
-        }
+        },
       );
     }
   }

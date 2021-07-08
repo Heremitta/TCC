@@ -1,22 +1,23 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { AfterContentInit, Component, Inject, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { ThemeService } from '../../@core/mock/services/theme.service';
 import { MENU_ITEMS } from './menu.visitor';
-import { animacaoDeRota } from '../../@theme/route-animations';
-import { of } from 'rxjs';
+import { authRoute } from '../../@theme/route-animations';
+import { of, Subscription } from 'rxjs';
 import { UserDbService } from '../../@core/mock/localDb/UserDb.service';
 import { userIndexed } from '../../@core/data/userIndexed.model';
 import { UserService } from '../../@core/mock/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DOCUMENT } from '@angular/common';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-visitor',
   templateUrl: './visitor.component.html',
   styleUrls: ['./visitor.component.scss'],
-  animations: [animacaoDeRota],
+  // animations: [authRoute],
 })
-export class VisitorComponent implements OnInit {
+export class VisitorComponent implements AfterContentInit {
   darkMode;
   menu = [];
   rotaAtual;
@@ -26,39 +27,22 @@ export class VisitorComponent implements OnInit {
     private _userService: UserService,
     private _userDbService: UserDbService,
     private _router: Router,
-    private _themeService: ThemeService
+    private _themeService: ThemeService,
   ) {
     this.menu = MENU_ITEMS;
     this.darkMode = this._themeService.darkMode;
     this.rotaAtual = this._router.url;
   }
 
-  ngOnInit() {
+  ngAfterContentInit(): void {
+    //Called after ngOnInit when the component's or directive's content has been initialized.
+    //Add 'implements AfterContentInit' to the class.
     let user;
     this.checkUserIndexedDb().then((e) => {
       user = e;
       if (user) {
         if ('token' in user) {
-          console.log(user.token);
-          let sub = this._userService.checkToken(user.token).subscribe(
-            (login: any) => {
-              if ('login' in login) {
-                this._userDbService.saveUser({
-                  token: login.token,
-                  userId: login.login.userId,
-                });
-                this._userService.user = login;
-                this._userService.isLoged.next(true);
-                this._router.navigate(['/dashboard']);
-              }
-            },
-            (err) => {
-              console.log(err);
-            },
-            () => {
-              sub.unsubscribe();
-            }
-          );
+          this.haveToken(user);
         }
       } else {
         if (!this._userService.isLoged.value) {
@@ -66,6 +50,20 @@ export class VisitorComponent implements OnInit {
         }
         this._userService.isLoged.next(false);
       }
+    });
+  }
+  haveToken(user) {
+    this._userService.user$ = this._userService.checkToken(user.token);
+    let sub: Subscription = this._userService.user$.subscribe((login) => {
+      if ('login' in login) {
+        this._userService.isLoged.next(true);
+        this._userDbService.saveUser({
+          token: login.token,
+          userId: login.login.userId,
+        });
+        this._router.navigate(['/dashboard']);
+      }
+      this._userService.isLoged.value ? sub.unsubscribe() : '';
     });
   }
   openSnackBar(message: string, action: string) {

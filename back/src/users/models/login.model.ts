@@ -1,7 +1,6 @@
 import { IsEmail, IsNotEmpty, IsString, MaxLength } from 'class-validator';
 import { Model } from 'sequelize';
 import {
-  AutoIncrement,
   BelongsTo,
   Column,
   DataType,

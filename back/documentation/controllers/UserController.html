@@ -54,7 +54,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/users/controlles/usuarios.controller.ts</code>
+            <code>src/users/controllers/usuarios.controller.ts</code>
         </p>
 
             <p class="comment">
@@ -143,7 +143,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="22"
-                            class="link-to-prism">src/users/controlles/usuarios.controller.ts:22</a></div>
+                            class="link-to-prism">src/users/controllers/usuarios.controller.ts:22</a></div>
                 </td>
             </tr>
 
@@ -152,7 +152,7 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/userModel.html" target="_self" >Promise&lt;userModel[]&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/user.html" target="_self" >Promise&lt;user[]&gt;</a></code>
 
                     </div>
                 </td>
@@ -188,8 +188,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">src/users/controlles/usuarios.controller.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/users/controllers/usuarios.controller.ts:38</a></div>
                 </td>
             </tr>
 
@@ -247,7 +247,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>newUser(user: <a href="../classes/userModel.html">userModel</a>)</code>
+<code>newUser(user: <a href="../classes/user.html">user</a>)</code>
                 </td>
             </tr>
 
@@ -262,7 +262,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">src/users/controlles/usuarios.controller.ts:30</a></div>
+                            class="link-to-prism">src/users/controllers/usuarios.controller.ts:30</a></div>
                 </td>
             </tr>
 
@@ -284,7 +284,7 @@
                                 <tr>
                                     <td>user</td>
                                     <td>
-                                                <code><a href="../classes/userModel.html" target="_self" >userModel</a></code>
+                                                <code><a href="../classes/user.html" target="_self" >user</a></code>
                                     </td>
 
                                     <td>
@@ -324,7 +324,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>updateUser(user: <a href="../classes/userModel.html">userModel</a>)</code>
+<code>updateUser(user: <a href="../classes/user.html">user</a>)</code>
                 </td>
             </tr>
 
@@ -338,8 +338,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">src/users/controlles/usuarios.controller.ts:35</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/users/controllers/usuarios.controller.ts:34</a></div>
                 </td>
             </tr>
 
@@ -361,7 +361,7 @@
                                 <tr>
                                     <td>user</td>
                                     <td>
-                                                <code><a href="../classes/userModel.html" target="_self" >userModel</a></code>
+                                                <code><a href="../classes/user.html" target="_self" >user</a></code>
                                     </td>
 
                                     <td>
@@ -416,7 +416,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">src/users/controlles/usuarios.controller.ts:26</a></div>
+                            class="link-to-prism">src/users/controllers/usuarios.controller.ts:26</a></div>
                 </td>
             </tr>
 
@@ -449,7 +449,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/userModel.html" target="_self" >Promise&lt;userModel&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/user.html" target="_self" >Promise&lt;user&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -472,32 +472,31 @@
   Post,
   Put,
 } from &#x27;@nestjs/common&#x27;;
-import { userModel } from &#x27;../models/user.model&#x27;;
-import { userTypeModel } from &#x27;../models/userType.model&#x27;;
+import { user } from &#x27;../models/user.model&#x27;;
+import { TypeUser } from &#x27;../models/typeUser.model&#x27;;
 import { UserService as UserService } from &#x27;../services/user.service&#x27;;
 
 @Controller(&#x27;user&#x27;)
 export class UserController {
   constructor(private userService: UserService) {}
   // @Get(&#x27;types&#x27;)
-  // allUsersAndTypes(): Promise&lt;{ users: userModel[]; types: userTypeModel[] }&gt; {
+  // allUsersAndTypes(): Promise&lt;{ users: user[]; types: userType[] }&gt; {
   //   return this.userService.userAndType();
   // }
   @Get()
-  allUsers(): Promise&lt;userModel[]&gt; {
+  allUsers(): Promise&lt;user[]&gt; {
     return this.userService.getAll();
   }
   @Get(&#x27;:id&#x27;)
-  user(@Param(&#x27;id&#x27;) param): Promise&lt;userModel&gt; {
+  user(@Param(&#x27;id&#x27;) param): Promise&lt;user&gt; {
     return this.userService.get(param);
   }
   @Post()
-  newUser(@Body() user: userModel) {
-    console.log(user);
+  newUser(@Body() user: user) {
     return this.userService.newUser(user);
   }
   @Put()
-  updateUser(@Body() user: userModel): Promise&lt;[number, userModel[]]&gt; {
+  updateUser(@Body() user: user): Promise&lt;[number, user[]]&gt; {
     return this.userService.updateUser(user);
   }
   @Delete(&#x27;:id&#x27;)
